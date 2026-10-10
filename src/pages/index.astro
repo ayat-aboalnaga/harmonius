@@ -1,0 +1,155 @@
+---
+import { getCollection } from 'astro:content';
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
+	(a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+
+const dateFormat = new Intl.DateTimeFormat('en', {
+	day: 'numeric',
+	month: 'long',
+	year: 'numeric',
+});
+---
+
+<SiteLayout
+	title="Fieldnotes — a journal on design"
+	description="Fieldnotes is an independent journal about the ideas, objects, and details shaping how we live."
+>
+	<main>
+		<section class="intro" aria-labelledby="intro-title">
+			<p class="eyebrow">An independent design journal</p>
+			<h1 id="intro-title">Looking closer.<br /><span>Thinking wider.</span></h1>
+			<p class="intro-copy">
+				Notes on the ideas, objects, and details shaping how we live. Made for the
+				curious, collected in one place.
+			</p>
+		</section>
+
+		<section class="journal" aria-labelledby="journal-title">
+			<div class="section-heading">
+				<h2 id="journal-title">Latest writing</h2>
+				<span>{posts.length.toString().padStart(2, '0')} notes</span>
+			</div>
+
+			{posts.length > 0 ? (
+				<div class="post-list">
+					{
+						posts.map((post, index) => (
+							<article class:list={['post-card', { featured: index === 0 }]}>
+								<a class="post-link" href={`/journal/${post.id}/`}>
+									<div class="post-index" aria-hidden="true">
+										{String(index + 1).padStart(2, '0')}
+									</div>
+									<div class="post-content">
+										<div class="post-meta">
+											<span>{post.data.category}</span>
+											<time datetime={post.data.publishedAt.toISOString()}>
+												{dateFormat.format(post.data.publishedAt)}
+											</time>
+										</div>
+										<h3>{post.data.title}</h3>
+										<p>{post.data.description}</p>
+										<span class="read-link">Read the note <span aria-hidden="true">↗</span></span>
+									</div>
+									<div class="post-arrow" aria-hidden="true">↗</div>
+								</a>
+							</article>
+						))
+					}
+				</div>
+			) : (
+				<p class="empty-state">New notes are on their way. Please check back soon.</p>
+			)}
+		</section>
+
+		<aside class="closing-note">
+			<p>Good design is never just how it looks.</p>
+			<span>It’s how it makes you see.</span>
+		</aside>
+	</main>
+</SiteLayout>
+
+<style>
+	main { max-width: 1120px; margin: 0 auto; padding: 0 48px; }
+	.intro { padding: 120px 0 112px; max-width: 800px; }
+	.eyebrow, .section-heading span, .post-meta, .post-index {
+		font: 500 11px/1.4 var(--font-mono);
+		letter-spacing: .08em;
+		text-transform: uppercase;
+	}
+	.eyebrow { color: var(--color-accent); margin: 0 0 27px; }
+	h1 {
+		font: 400 clamp(58px, 9vw, 112px)/.98 var(--font-display);
+		letter-spacing: -.075em;
+		margin: 0;
+	}
+	h1 span { color: var(--color-muted); }
+	.intro-copy {
+		color: var(--color-muted);
+		font-size: 17px;
+		line-height: 1.65;
+		margin: 30px 0 0;
+		max-width: 440px;
+	}
+	.journal { border-top: 1px solid var(--color-line); }
+	.section-heading {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+		padding: 22px 0;
+	}
+	.section-heading h2 { font: 400 16px/1.3 var(--font-display); margin: 0; }
+	.section-heading span { color: var(--color-muted); }
+	.post-card { border-top: 1px solid var(--color-line); }
+	.post-link {
+		align-items: start;
+		color: inherit;
+		display: grid;
+		gap: 24px;
+		grid-template-columns: 48px 1fr 24px;
+		padding: 35px 0 38px;
+		text-decoration: none;
+	}
+	.post-index { color: var(--color-muted); padding-top: 4px; }
+	.post-content { max-width: 680px; }
+	.post-meta { color: var(--color-muted); display: flex; gap: 18px; }
+	.post-meta span { color: var(--color-accent); }
+	.post-content h3 {
+		font: 400 clamp(28px, 4vw, 43px)/1.12 var(--font-display);
+		letter-spacing: -.045em;
+		margin: 16px 0 10px;
+	}
+	.post-content > p { color: var(--color-muted); line-height: 1.65; margin: 0; max-width: 580px; }
+	.read-link {
+		display: inline-block;
+		font: 500 11px/1.4 var(--font-mono);
+		letter-spacing: .04em;
+		margin-top: 22px;
+		text-transform: uppercase;
+	}
+	.read-link span { color: var(--color-accent); }
+	.post-arrow { color: var(--color-accent); font-size: 20px; transition: transform 160ms ease; }
+	.post-link:hover .post-arrow { transform: translate(3px, -3px); }
+	.post-link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 5px; }
+	.empty-state { color: var(--color-muted); padding: 36px 0; }
+	.closing-note {
+		border-top: 1px solid var(--color-line);
+		margin-top: 94px;
+		padding: 24px 0 80px;
+	}
+	.closing-note p, .closing-note span { font: 400 14px/1.5 var(--font-display); margin: 0; }
+	.closing-note span { color: var(--color-muted); }
+	@media (max-width: 640px) {
+		main { padding: 0 22px; }
+		.intro { padding: 86px 0 80px; }
+		.intro-copy { font-size: 15px; }
+		.post-link { gap: 12px; grid-template-columns: 28px 1fr 18px; padding: 27px 0; }
+		.post-meta { flex-wrap: wrap; gap: 8px 14px; }
+		.closing-note { margin-top: 65px; padding-bottom: 56px; }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.post-arrow { transition: none; }
+	}
+</style>
