@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-10T21:44:23.792+03:00",
+  "title": "Design System: Fieldnotes",
+  "extensions": {
+    "colorMeta": {
+      "core-ink": {
+        "role": "primary",
+        "displayName": "Core Ink",
+        "canonical": "#663732",
+        "tonalRamp": [
+          "oklch(15% 0.068 27.0)",
+          "oklch(25% 0.068 27.0)",
+          "oklch(35% 0.068 27.0)",
+          "oklch(45% 0.068 27.0)",
+          "oklch(55% 0.068 27.0)",
+          "oklch(65% 0.068 27.0)",
+          "oklch(75% 0.068 27.0)",
+          "oklch(95% 0.068 27.0)"
+        ]
+      },
+      "warm-coral": {
+        "role": "secondary",
+        "displayName": "Warm Coral",
+        "canonical": "#CC6D64",
+        "tonalRamp": [
+          "oklch(15% 0.122 26.6)",
+          "oklch(25% 0.122 26.6)",
+          "oklch(35% 0.122 26.6)",
+          "oklch(45% 0.122 26.6)",
+          "oklch(55% 0.122 26.6)",
+          "oklch(65% 0.122 26.6)",
+          "oklch(75% 0.122 26.6)",
+          "oklch(95% 0.122 26.6)"
+        ]
+      },
+      "bright-aqua": {
+        "role": "tertiary",
+        "displayName": "Bright Aqua",
+        "canonical": "#64C3CC",
+        "tonalRamp": [
+          "oklch(15% 0.091 203.6)",
+          "oklch(25% 0.091 203.6)",
+          "oklch(35% 0.091 203.6)",
+          "oklch(45% 0.091 203.6)",
+          "oklch(55% 0.091 203.6)",
+          "oklch(65% 0.091 203.6)",
+          "oklch(75% 0.091 203.6)",
+          "oklch(95% 0.091 203.6)"
+        ]
+      },
+      "soft-mist": {
+        "role": "secondary",
+        "displayName": "Soft Mist",
+        "canonical": "#98C7CC",
+        "tonalRamp": [
+          "oklch(15% 0.050 204.3)",
+          "oklch(25% 0.050 204.3)",
+          "oklch(35% 0.050 204.3)",
+          "oklch(45% 0.050 204.3)",
+          "oklch(55% 0.050 204.3)",
+          "oklch(65% 0.050 204.3)",
+          "oklch(75% 0.050 204.3)",
+          "oklch(95% 0.050 204.3)"
+        ]
+      },
+      "deep-teal": {
+        "role": "secondary",
+        "displayName": "Deep Teal",
+        "canonical": "#326166",
+        "tonalRamp": [
+          "oklch(15% 0.052 204.5)",
+          "oklch(25% 0.052 204.5)",
+          "oklch(35% 0.052 204.5)",
+          "oklch(45% 0.052 204.5)",
+          "oklch(55% 0.052 204.5)",
+          "oklch(65% 0.052 204.5)",
+          "oklch(75% 0.052 204.5)",
+          "oklch(95% 0.052 204.5)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "#f8f3eb",
+        "tonalRamp": [
+          "oklch(15% 0.012 79.8)",
+          "oklch(25% 0.012 79.8)",
+          "oklch(35% 0.012 79.8)",
+          "oklch(45% 0.012 79.8)",
+          "oklch(55% 0.012 79.8)",
+          "oklch(65% 0.012 79.8)",
+          "oklch(75% 0.012 79.8)",
+          "oklch(95% 0.012 79.8)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Newsreader Display",
+        "purpose": "Oversized homepage editorial headline."
+      },
+      "article-heading": {
+        "displayName": "Newsreader Article Heading",
+        "purpose": "Large title inside the article's mist frame."
+      },
+      "reading": {
+        "displayName": "DM Sans Reading",
+        "purpose": "Long-form article copy in the narrow paper column."
+      },
+      "label": {
+        "displayName": "DM Sans Label",
+        "purpose": "Compact category, date, count, and proof-register metadata."
+      }
+    },
+    "motion": [
+      {
+        "name": "action-hover",
+        "value": "180ms ease-out",
+        "purpose": "Color change for the homepage primary action."
+      },
+      {
+        "name": "registration-rail",
+        "value": "220ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Quick extension of the post-link registration rail on hover and keyboard focus."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Disables the hero-action and registration-rail transitions and removes smooth scrolling."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-home",
+        "value": "480px",
+        "purpose": "Tightens homepage shell gutter, hero type, and featured-entry columns."
+      },
+      {
+        "name": "article-mobile",
+        "value": "640px",
+        "purpose": "Tightens article frame and body type; stacks footer and masthead-adjacent content."
+      },
+      {
+        "name": "stack-intro",
+        "value": "760px",
+        "purpose": "Stacks homepage intro copy above the proof register."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Journal Action",
+      "kind": "button",
+      "refersTo": "primary-action",
+      "description": "Prominent link from the homepage plate to the newest note.",
+      "html": "<a class=\"ds-hero-action\" href=\"#\">Explore the latest note <svg aria-hidden=\"true\" viewBox=\"0 0 18 18\"><path d=\"M3 9h11M9 4l5 5-5 5\"/></svg></a>",
+      "css": ".ds-hero-action { align-items: center; background: var(--color-ink); color: var(--color-paper); display: inline-flex; font: 600 13px/1.4 \"DM Sans\", Arial, sans-serif; gap: 20px; padding: 14px 17px; text-decoration: none; transition: background-color 180ms ease-out, color 180ms ease-out; } .ds-hero-action svg { fill: none; height: 18px; stroke: currentColor; stroke-linecap: square; stroke-linejoin: miter; stroke-width: 1.4; width: 18px; } .ds-hero-action:hover { background: var(--color-teal); color: var(--color-paper); } .ds-hero-action:focus-visible { outline: 2px solid var(--color-teal); outline-offset: 4px; } @media (prefers-reduced-motion: reduce) { .ds-hero-action { transition: none; } }"
+    },
+    {
+      "name": "Masthead",
+      "kind": "nav",
+      "refersTo": "masthead-link",
+      "description": "Brand tile and compact Journal/Contact navigation on the ink band.",
+      "html": "<header class=\"ds-masthead\"><a class=\"ds-wordmark\" href=\"#\"><span class=\"ds-mark\">F.</span><span>Fieldnotes</span></a><nav aria-label=\"Main navigation\"><a href=\"#\">Journal</a><a href=\"#\">Contact <svg aria-hidden=\"true\" viewBox=\"0 0 16 16\"><path d=\"M4 12 12 4M5 4h7v7\"/></svg></a></nav></header>",
+      "css": ".ds-masthead { align-items: center; background: var(--color-ink); color: var(--color-paper); display: flex; justify-content: space-between; padding: 16px 22px; } .ds-wordmark { align-items: center; color: inherit; display: inline-flex; font: 650 18px/1 \"Newsreader\", Georgia, serif; gap: 11px; letter-spacing: -.025em; text-decoration: none; } .ds-mark { align-items: center; background: var(--color-aqua); color: var(--color-ink); display: inline-flex; font: 600 13px/1 \"Newsreader\", Georgia, serif; height: 34px; justify-content: center; width: 34px; } .ds-masthead nav { align-items: center; display: flex; gap: 20px; } .ds-masthead nav a { align-items: center; color: var(--color-paper); display: inline-flex; font: 600 12px/1.3 \"DM Sans\", Arial, sans-serif; gap: 7px; text-decoration: none; } .ds-masthead nav a:hover { color: var(--color-aqua); } .ds-masthead nav svg { fill: none; height: 13px; stroke: currentColor; stroke-width: 1.4; width: 13px; } .ds-masthead a:focus-visible { outline: 2px solid var(--color-aqua); outline-offset: 4px; } @media (max-width: 640px) { .ds-masthead { padding: 16px 22px; } .ds-wordmark { font-size: 16px; gap: 8px; } .ds-mark { height: 30px; width: 30px; } .ds-masthead nav { gap: 17px; } .ds-masthead nav a { font-size: 11px; } }"
+    },
+    {
+      "name": "Featured Journal Entry",
+      "kind": "custom",
+      "refersTo": "featured-entry",
+      "description": "Numbered full-row link with the expandable coral registration rail.",
+      "html": "<a class=\"ds-post-link\" href=\"#\"><span class=\"ds-index\">01</span><span class=\"ds-copy\"><span class=\"ds-meta\">PERSPECTIVE <time>OCTOBER 10, 2026</time></span><span class=\"ds-title\">Designing for the in-between</span><span class=\"ds-description\">The quiet transitions between the things we notice can shape an experience as much as its centrepiece.</span><span class=\"ds-read\">Read the note</span></span><span class=\"ds-signature\"><span class=\"ds-rail\"></span><svg aria-hidden=\"true\" viewBox=\"0 0 18 18\"><path d=\"M3 9h11M9 4l5 5-5 5\"/></svg></span></a>",
+      "css": ".ds-post-link { align-items: center; background: var(--color-mist); color: var(--color-ink); display: grid; gap: 24px; grid-template-columns: 42px minmax(0, 1fr) 38px; padding: 30px 24px; text-decoration: none; } .ds-index { align-self: start; color: var(--color-teal); font: 650 12px/1.3 \"DM Sans\", Arial, sans-serif; font-variant-numeric: tabular-nums; padding-top: 7px; } .ds-copy { display: grid; max-width: 790px; } .ds-meta { display: flex; font: 650 11px/1.4 \"DM Sans\", Arial, sans-serif; gap: 15px; letter-spacing: .05em; text-transform: uppercase; } .ds-meta time { font-variant-numeric: tabular-nums; } .ds-title { font: 540 clamp(2rem, 5vw, 4.1rem)/1 \"Newsreader\", Georgia, serif; letter-spacing: -.045em; margin-top: 18px; } .ds-description { font: 400 15px/1.65 \"DM Sans\", Arial, sans-serif; margin-top: 15px; max-width: 62ch; } .ds-read { color: var(--color-teal); font: 700 12px/1.4 \"DM Sans\", Arial, sans-serif; margin-top: 20px; text-decoration: underline; text-underline-offset: .25em; width: fit-content; } .ds-signature { align-items: center; display: flex; height: 28px; justify-content: flex-end; position: relative; width: 38px; } .ds-rail { background: var(--color-coral); height: 3px; left: 0; position: absolute; top: 13px; transform: scaleX(.32); transform-origin: left center; transition: transform 220ms cubic-bezier(.16, 1, .3, 1); width: 30px; } .ds-signature svg { fill: none; height: 18px; position: relative; stroke: currentColor; stroke-width: 1.4; width: 18px; } .ds-post-link:hover .ds-rail, .ds-post-link:focus-visible .ds-rail { transform: scaleX(1); } .ds-post-link:focus-visible { outline: 2px solid var(--color-teal); outline-offset: 4px; } @media (prefers-reduced-motion: reduce) { .ds-rail { transition: none; } }"
+    },
+    {
+      "name": "Proof Register",
+      "kind": "custom",
+      "refersTo": "color-register",
+      "description": "Compact swatch index printed into the homepage aqua plate.",
+      "html": "<aside class=\"ds-register\"><div class=\"ds-register-heading\"><span>Color register</span><span>05 / 05</span></div><ol><li><i style=\"--swatch: var(--color-ink)\"></i><span>Core ink</span><code>#663732</code></li><li><i style=\"--swatch: var(--color-coral)\"></i><span>Warm note</span><code>#CC6D64</code></li><li><i style=\"--swatch: var(--color-aqua)\"></i><span>Bright plate</span><code>#64C3CC</code></li><li><i style=\"--swatch: var(--color-mist)\"></i><span>Soft plate</span><code>#98C7CC</code></li><li><i style=\"--swatch: var(--color-teal)\"></i><span>Deep teal</span><code>#326166</code></li></ol></aside>",
+      "css": ".ds-register { border-top: 1px solid var(--color-ink); color: var(--color-ink); padding-top: 14px; } .ds-register-heading { display: flex; font: 700 11px/1.4 \"DM Sans\", Arial, sans-serif; justify-content: space-between; letter-spacing: .08em; text-transform: uppercase; } .ds-register ol { list-style: none; margin: 18px 0 0; padding: 0; } .ds-register li { align-items: center; border-top: 1px solid rgb(102 55 50 / 30%); display: grid; font: 400 12px/1.4 \"DM Sans\", Arial, sans-serif; gap: 10px; grid-template-columns: 38px minmax(0, 1fr) auto; min-height: 41px; } .ds-register i { background: var(--swatch); display: block; height: 13px; width: 30px; } .ds-register code { font: 600 10px/1.3 \"DM Sans\", Arial, sans-serif; font-variant-numeric: tabular-nums; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Color Proof Book",
+    "overview": "Fieldnotes pairs oversized Newsreader headlines and flat, confident color plates with the small labels, numbered entries, and registration details of a working proof sheet. The homepage gives that frame the strongest color; the essay itself returns to warm paper, a narrow reading measure, and quiet typography.\n\nThe saved direction contract records “Color Proof Book,” candidate 7 of seven, with seed key `f3bbfd94`. That contract is the only direction provenance verified here; no archived roll receipt was available, so none is claimed. The shipped implementation is evidenced by `SiteLayout.astro`, `index.astro`, `[slug].astro`, and the local desktop and 390×844 mobile captures. The homepage register stacks beneath the hero copy and fits its plate; the article frame and reading column also fit the mobile capture.",
+    "keyCharacteristics": [
+      "Large editorial serif against DM Sans utility text.",
+      "Saturated, square-edged plates give way to a paper reading surface.",
+      "Color-register rows, numbered notes, and short registration marks make the editorial system feel indexed.",
+      "Inline SVG arrows carry navigation; typography and color blocks carry the identity."
+    ],
+    "rules": [
+      {
+        "name": "The Plate-to-Paper Rule",
+        "body": "Let strong color frame discovery and article metadata; return essay prose to the quiet paper ground.",
+        "section": "colors"
+      },
+      {
+        "name": "The Narrow Measure Rule",
+        "body": "Keep long-form copy near the implemented `68ch` measure; the plate may be broad, but the essay is not.",
+        "section": "layout"
+      }
+    ],
+    "dos": [
+      "Do use the exact palette and keep the page-ground paper neutral in addition to its five proof colors.",
+      "Do reserve bright plates for the homepage intro and highlighted editorial frames; keep article prose on paper.",
+      "Do preserve the 1440px outer cap, fluid shell gutters, and narrow article measure when extending these surfaces.",
+      "Do use small uppercase labels for real categories, dates, counts, and register headings—not as an unrelated decorative layer.",
+      "Do retain the registration rail’s hover/focus behavior and honor reduced-motion preferences."
+    ],
+    "donts": [
+      "Don't introduce rounded cards or shadows; neither belongs to the shipped surface language.",
+      "Don't replace inline SVG navigation arrows with an unrelated icon style.",
+      "Don't promote the current homepage composition or its seed provenance into an undocumented claim about an archived design roll."
+    ]
+  }
+}

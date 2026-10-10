@@ -17,43 +17,95 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 	title="Fieldnotes — a journal on design"
 	description="Fieldnotes is an independent journal about the ideas, objects, and details shaping how we live."
 >
-	<main>
+	<main class="home-shell">
 		<section class="intro" aria-labelledby="intro-title">
-			<p class="eyebrow">An independent design journal</p>
-			<h1 id="intro-title">Looking closer.<br /><span>Thinking wider.</span></h1>
-			<p class="intro-copy">
-				Notes on the ideas, objects, and details shaping how we live. Made for the
-				curious, collected in one place.
-			</p>
+			<div class="intro-copy-block">
+				<h1 id="intro-title">Looking closer.<br /><span>Thinking wider.</span></h1>
+				<p class="intro-copy">
+					Notes on the ideas, objects, and details shaping how we live. Made for the
+					curious, collected in one place.
+				</p>
+				<a
+					class="hero-action"
+					href={posts[0] ? `/journal/${posts[0].id}/` : '#journal-title'}
+				>
+					{posts[0] ? 'Explore the latest note' : 'Browse the journal'}
+					<svg aria-hidden="true" viewBox="0 0 18 18">
+						<path d="M3 9h11M9 4l5 5-5 5" />
+					</svg>
+				</a>
+			</div>
+
+			<aside class="proof-register" aria-label="Fieldnotes color register">
+				<div class="register-heading">
+					<span>Color register</span>
+					<span>05 / 05</span>
+				</div>
+				<ol class="swatch-list">
+					<li>
+						<span class="swatch" style="--swatch-color: #663732"></span>
+						<span>Core ink</span>
+						<code>#663732</code>
+					</li>
+					<li>
+						<span class="swatch" style="--swatch-color: #CC6D64"></span>
+						<span>Warm note</span>
+						<code>#CC6D64</code>
+					</li>
+					<li>
+						<span class="swatch" style="--swatch-color: #64C3CC"></span>
+						<span>Bright plate</span>
+						<code>#64C3CC</code>
+					</li>
+					<li>
+						<span class="swatch" style="--swatch-color: #98C7CC"></span>
+						<span>Soft plate</span>
+						<code>#98C7CC</code>
+					</li>
+					<li>
+						<span class="swatch" style="--swatch-color: #326166"></span>
+						<span>Deep teal</span>
+						<code>#326166</code>
+					</li>
+				</ol>
+			</aside>
 		</section>
 
 		<section class="journal" aria-labelledby="journal-title">
 			<div class="section-heading">
 				<h2 id="journal-title">Latest writing</h2>
-				<span>{posts.length.toString().padStart(2, '0')} notes</span>
+				<span class="note-count">
+					<span>{posts.length.toString().padStart(2, '0')}</span>
+					{posts.length === 1 ? 'note' : 'notes'}
+				</span>
 			</div>
 
 			{posts.length > 0 ? (
 				<div class="post-list">
 					{
 						posts.map((post, index) => (
-							<article class:list={['post-card', { featured: index === 0 }]}>
+							<article class:list={['post-entry', { featured: index === 0 }]}>
 								<a class="post-link" href={`/journal/${post.id}/`}>
-									<div class="post-index" aria-hidden="true">
+									<span class="post-index" aria-hidden="true">
 										{String(index + 1).padStart(2, '0')}
-									</div>
-									<div class="post-content">
-										<div class="post-meta">
+									</span>
+									<span class="post-content">
+										<span class="post-meta">
 											<span>{post.data.category}</span>
 											<time datetime={post.data.publishedAt.toISOString()}>
 												{dateFormat.format(post.data.publishedAt)}
 											</time>
-										</div>
-										<h3>{post.data.title}</h3>
-										<p>{post.data.description}</p>
-										<span class="read-link">Read the note <span aria-hidden="true">↗</span></span>
-									</div>
-									<div class="post-arrow" aria-hidden="true">↗</div>
+										</span>
+										<h3 class="post-title">{post.data.title}</h3>
+										<span class="post-description">{post.data.description}</span>
+										<span class="read-link">Read the note</span>
+									</span>
+									<span class="post-signature" aria-hidden="true">
+										<span class="registration-rail"></span>
+										<svg viewBox="0 0 18 18">
+											<path d="M3 9h11M9 4l5 5-5 5" />
+										</svg>
+									</span>
 								</a>
 							</article>
 						))
@@ -72,84 +124,274 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 </SiteLayout>
 
 <style>
-	main { max-width: 1120px; margin: 0 auto; padding: 0 48px; }
-	.intro { padding: 120px 0 112px; max-width: 800px; }
-	.eyebrow, .section-heading span, .post-meta, .post-index {
-		font: 500 11px/1.4 var(--font-mono);
+	.home-shell {
+		--shell-gutter: clamp(22px, 5.2vw, 76px);
+		margin: 0 auto;
+		max-width: 1440px;
+		padding: 0 var(--shell-gutter);
+	}
+	.intro {
+		align-items: stretch;
+		background: var(--color-aqua);
+		display: grid;
+		gap: clamp(32px, 5vw, 72px);
+		grid-template-columns: minmax(0, 1.35fr) minmax(220px, .75fr);
+		margin: 38px 0 96px;
+		padding: clamp(34px, 6.5vw, 88px);
+		position: relative;
+	}
+	.intro::after {
+		background: var(--color-coral);
+		content: "";
+		height: 10px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: clamp(80px, 16vw, 220px);
+	}
+	.intro-copy-block {
+		align-self: center;
+		max-width: 760px;
+	}
+	h1 {
+		color: var(--color-ink);
+		font: 560 clamp(3rem, 5.8vw, 5.5rem)/.93 var(--font-display);
+		letter-spacing: -.055em;
+		margin: 0;
+		max-width: 760px;
+	}
+	h1 span { color: var(--color-teal); }
+	.intro-copy {
+		color: var(--color-ink);
+		font-size: clamp(16px, 1.25vw, 18px);
+		line-height: 1.65;
+		margin: 28px 0 0;
+		max-width: 48ch;
+	}
+	.hero-action {
+		align-items: center;
+		background: var(--color-ink);
+		color: var(--color-paper);
+		display: inline-flex;
+		font-size: 13px;
+		font-weight: 600;
+		gap: 20px;
+		margin-top: 28px;
+		padding: 14px 17px;
+		text-decoration: none;
+		transition: background-color 180ms ease-out, color 180ms ease-out;
+	}
+	.hero-action:hover {
+		background: var(--color-teal);
+		color: var(--color-paper);
+	}
+	.hero-action:focus-visible { outline-color: var(--color-aqua); }
+	.hero-action svg, .post-signature svg {
+		fill: none;
+		height: 18px;
+		stroke: currentColor;
+		stroke-linecap: square;
+		stroke-linejoin: miter;
+		stroke-width: 1.4;
+		width: 18px;
+	}
+	.proof-register {
+		align-self: center;
+		border-top: 1px solid var(--color-ink);
+		color: var(--color-ink);
+		padding-top: 14px;
+	}
+	.register-heading {
+		display: flex;
+		font-size: 11px;
+		font-weight: 700;
+		justify-content: space-between;
 		letter-spacing: .08em;
 		text-transform: uppercase;
 	}
-	.eyebrow { color: var(--color-accent); margin: 0 0 27px; }
-	h1 {
-		font: 400 clamp(58px, 9vw, 112px)/.98 var(--font-display);
-		letter-spacing: -.075em;
-		margin: 0;
+	.swatch-list {
+		list-style: none;
+		margin: 18px 0 0;
+		padding: 0;
 	}
-	h1 span { color: var(--color-muted); }
-	.intro-copy {
-		color: var(--color-muted);
-		font-size: 17px;
-		line-height: 1.65;
-		margin: 30px 0 0;
-		max-width: 440px;
-	}
-	.journal { border-top: 1px solid var(--color-line); }
-	.section-heading {
+	.swatch-list li {
 		align-items: center;
+		border-top: 1px solid rgb(102 55 50 / 30%);
+		display: grid;
+		font-size: 12px;
+		gap: 10px;
+		grid-template-columns: 38px minmax(0, 1fr) auto;
+		min-height: 41px;
+	}
+	.swatch {
+		background: var(--swatch-color);
+		display: block;
+		height: 13px;
+		width: 30px;
+	}
+	.swatch-list code {
+		font-family: var(--font-body);
+		font-size: 10px;
+		font-variant-numeric: tabular-nums;
+		font-weight: 600;
+	}
+	.journal { scroll-margin-top: 24px; }
+	.section-heading {
+		align-items: baseline;
+		border-bottom: 1px solid var(--color-line);
 		display: flex;
 		justify-content: space-between;
-		padding: 22px 0;
+		padding: 0 0 17px;
 	}
-	.section-heading h2 { font: 400 16px/1.3 var(--font-display); margin: 0; }
-	.section-heading span { color: var(--color-muted); }
-	.post-card { border-top: 1px solid var(--color-line); }
-	.post-link {
-		align-items: start;
-		color: inherit;
-		display: grid;
-		gap: 24px;
-		grid-template-columns: 48px 1fr 24px;
-		padding: 35px 0 38px;
-		text-decoration: none;
+	.section-heading h2 {
+		font: 560 clamp(1.8rem, 3vw, 2.5rem)/1.05 var(--font-display);
+		letter-spacing: -.035em;
+		margin: 0;
 	}
-	.post-index { color: var(--color-muted); padding-top: 4px; }
-	.post-content { max-width: 680px; }
-	.post-meta { color: var(--color-muted); display: flex; gap: 18px; }
-	.post-meta span { color: var(--color-accent); }
-	.post-content h3 {
-		font: 400 clamp(28px, 4vw, 43px)/1.12 var(--font-display);
-		letter-spacing: -.045em;
-		margin: 16px 0 10px;
-	}
-	.post-content > p { color: var(--color-muted); line-height: 1.65; margin: 0; max-width: 580px; }
-	.read-link {
-		display: inline-block;
-		font: 500 11px/1.4 var(--font-mono);
-		letter-spacing: .04em;
-		margin-top: 22px;
+	.note-count {
+		align-items: baseline;
+		color: var(--color-teal);
+		display: inline-flex;
+		font-size: 11px;
+		font-weight: 600;
+		gap: 8px;
 		text-transform: uppercase;
 	}
-	.read-link span { color: var(--color-accent); }
-	.post-arrow { color: var(--color-accent); font-size: 20px; transition: transform 160ms ease; }
-	.post-link:hover .post-arrow { transform: translate(3px, -3px); }
-	.post-link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 5px; }
-	.empty-state { color: var(--color-muted); padding: 36px 0; }
-	.closing-note {
-		border-top: 1px solid var(--color-line);
-		margin-top: 94px;
-		padding: 24px 0 80px;
+	.note-count span {
+		color: var(--color-ink);
+		font-size: 14px;
+		font-variant-numeric: tabular-nums;
 	}
-	.closing-note p, .closing-note span { font: 400 14px/1.5 var(--font-display); margin: 0; }
-	.closing-note span { color: var(--color-muted); }
-	@media (max-width: 640px) {
-		main { padding: 0 22px; }
-		.intro { padding: 86px 0 80px; }
-		.intro-copy { font-size: 15px; }
-		.post-link { gap: 12px; grid-template-columns: 28px 1fr 18px; padding: 27px 0; }
-		.post-meta { flex-wrap: wrap; gap: 8px 14px; }
-		.closing-note { margin-top: 65px; padding-bottom: 56px; }
+	.post-entry { border-bottom: 1px solid var(--color-line); }
+	.post-entry.featured {
+		background: var(--color-mist);
+		margin-inline: calc(-1 * var(--shell-gutter));
+		padding-inline: var(--shell-gutter);
+	}
+	.post-link {
+		align-items: center;
+		color: var(--color-ink);
+		display: grid;
+		gap: clamp(16px, 3vw, 44px);
+		grid-template-columns: 42px minmax(0, 1fr) 38px;
+		padding: clamp(30px, 4.3vw, 58px) 0;
+		text-decoration: none;
+	}
+	.post-index {
+		align-self: start;
+		color: var(--color-teal);
+		font-size: 12px;
+		font-variant-numeric: tabular-nums;
+		font-weight: 650;
+		padding-top: 7px;
+	}
+	.post-content { display: grid; max-width: 790px; }
+	.post-meta {
+		align-items: center;
+		color: var(--color-ink);
+		display: flex;
+		font-size: 11px;
+		font-weight: 650;
+		gap: 15px;
+		letter-spacing: .05em;
+		text-transform: uppercase;
+	}
+	.post-meta time { font-variant-numeric: tabular-nums; }
+	.post-title {
+		font: 540 clamp(2.15rem, 5vw, 4.1rem)/1 var(--font-display);
+		letter-spacing: -.045em;
+		margin: 18px 0 0;
+		max-width: 760px;
+	}
+	.post-description {
+		font-size: 15px;
+		line-height: 1.65;
+		margin-top: 15px;
+		max-width: 62ch;
+	}
+	.read-link {
+		color: var(--color-teal);
+		font-size: 12px;
+		font-weight: 700;
+		margin-top: 20px;
+		text-decoration: underline;
+		text-underline-offset: .25em;
+		width: fit-content;
+	}
+	.post-signature {
+		align-items: center;
+		display: flex;
+		height: 28px;
+		justify-content: flex-end;
+		position: relative;
+		width: 38px;
+	}
+	.registration-rail {
+		background: var(--color-coral);
+		height: 3px;
+		left: 0;
+		position: absolute;
+		top: 13px;
+		transform: scaleX(.32);
+		transform-origin: left center;
+		transition: transform 220ms cubic-bezier(.16, 1, .3, 1);
+		width: 30px;
+	}
+	.post-signature svg { position: relative; }
+	.post-link:hover .registration-rail,
+	.post-link:focus-visible .registration-rail { transform: scaleX(1); }
+	.empty-state {
+		color: var(--color-teal);
+		font-size: 16px;
+		line-height: 1.6;
+		padding: 32px 0;
+	}
+	.closing-note {
+		align-items: end;
+		background: var(--color-teal);
+		color: var(--color-paper);
+		display: flex;
+		justify-content: space-between;
+		margin: 90px 0 74px;
+		padding: clamp(24px, 4vw, 48px);
+	}
+	.closing-note p, .closing-note span {
+		font: 500 clamp(1.45rem, 3vw, 2.5rem)/1.1 var(--font-display);
+		margin: 0;
+	}
+	.closing-note span {
+		font-size: clamp(1rem, 1.7vw, 1.35rem);
+		text-align: right;
+	}
+	@media (max-width: 760px) {
+		.intro {
+			gap: 44px;
+			grid-template-columns: 1fr;
+			margin: 22px 0 72px;
+			padding: clamp(26px, 7vw, 48px);
+		}
+		.intro-copy-block { max-width: 620px; }
+		h1 { font-size: clamp(2.75rem, 10vw, 4.5rem); }
+		.proof-register { max-width: 520px; width: 100%; }
+		.closing-note { align-items: flex-start; flex-direction: column; gap: 15px; }
+		.closing-note span { text-align: left; }
+	}
+	@media (max-width: 480px) {
+		.home-shell { --shell-gutter: 18px; }
+		.intro { gap: 34px; padding: clamp(18px, 5vw, 24px); }
+		h1 { font-size: clamp(2rem, 9vw, 3rem); }
+		.intro-copy { font-size: 15px; margin-top: 22px; }
+		.section-heading { align-items: center; }
+		.post-link { gap: 12px; grid-template-columns: 26px minmax(0, 1fr) 24px; }
+		.post-index { font-size: 11px; }
+		.post-meta { align-items: flex-start; flex-direction: column; gap: 5px; }
+		.post-title { font-size: clamp(2rem, 9vw, 2.7rem); margin-top: 14px; }
+		.post-description { font-size: 14px; }
+		.post-signature { width: 24px; }
+		.registration-rail { width: 21px; }
+		.closing-note { margin: 64px 0 54px; }
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.post-arrow { transition: none; }
+		.hero-action, .registration-rail { transition: none; }
 	}
 </style>

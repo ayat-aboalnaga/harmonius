@@ -17,16 +17,31 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 ---
 
 <SiteLayout title={`${post.data.title} — Fieldnotes`} description={post.data.description}>
-	<main>
+	<div class="reading-progress" aria-hidden="true"></div>
+	<main class="article-shell">
 		<article>
 			<header class="article-header">
-				<a class="back-link" href="/">← All notes</a>
-				<p class="eyebrow">{post.data.category}</p>
+				<a class="back-link" href="/">
+					<svg aria-hidden="true" viewBox="0 0 18 18">
+						<path d="M15 9H4m0 0 5-5m-5 5 5 5" />
+					</svg>
+					All notes
+				</a>
 				<h1>{post.data.title}</h1>
 				<p class="dek">{post.data.description}</p>
-				<time datetime={post.data.publishedAt.toISOString()}>
-					{dateFormat.format(post.data.publishedAt)}
-				</time>
+				<div class="article-meta">
+					<span>{post.data.category}</span>
+					<time datetime={post.data.publishedAt.toISOString()}>
+						{dateFormat.format(post.data.publishedAt)}
+					</time>
+				</div>
+				<div class="article-register" aria-hidden="true">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
 			</header>
 			<div class="article-body">
 				<Content />
@@ -38,73 +53,165 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 						{post.data.tags.join(' · ')}
 					</p>
 				)}
-				<a class="back-link" href="/">← Back to the journal</a>
+				<a class="back-link" href="/">
+					<svg aria-hidden="true" viewBox="0 0 18 18">
+						<path d="M15 9H4m0 0 5-5m-5 5 5 5" />
+					</svg>
+					Back to the journal
+				</a>
 			</footer>
 		</article>
 	</main>
 </SiteLayout>
 
+<script>
+	const progress = document.querySelector<HTMLElement>('.reading-progress');
+
+	if (progress) {
+		const updateProgress = () => {
+			const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+			const ratio = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 1;
+			progress.style.transform = `scaleX(${Math.min(1, Math.max(0, ratio))})`;
+		};
+
+		window.addEventListener('scroll', updateProgress, { passive: true });
+		window.addEventListener('resize', updateProgress);
+		updateProgress();
+	}
+</script>
+
 <style>
-	main { margin: 0 auto; max-width: 1120px; padding: 0 48px; }
-	.article-header {
+	.article-shell {
 		margin: 0 auto;
-		max-width: 720px;
-		padding: 70px 0 55px;
-		text-align: center;
+		max-width: 1440px;
+		padding: 0 clamp(22px, 5.2vw, 76px);
+	}
+	.reading-progress {
+		background: var(--color-teal);
+		height: 4px;
+		inset: 0 auto auto 0;
+		position: fixed;
+		transform: scaleX(0);
+		transform-origin: left center;
+		width: 100%;
+		z-index: 5;
+	}
+	.article-header {
+		background: var(--color-mist);
+		margin-top: 38px;
+		padding: clamp(26px, 5vw, 64px) clamp(26px, 6.5vw, 92px) 0;
 	}
 	.back-link {
-		color: var(--color-muted);
-		display: inline-block;
-		font: 500 11px/1.4 var(--font-mono);
+		align-items: center;
+		color: var(--color-ink);
+		display: inline-flex;
+		font-size: 12px;
+		font-weight: 650;
+		gap: 9px;
 		text-decoration: none;
 	}
-	.back-link:hover { color: var(--color-accent); }
-	.eyebrow {
-		color: var(--color-accent);
-		font: 500 11px/1.4 var(--font-mono);
-		letter-spacing: .08em;
-		margin: 54px 0 20px;
-		text-transform: uppercase;
+	.back-link:hover { text-decoration: underline; text-underline-offset: .25em; }
+	.back-link svg {
+		fill: none;
+		height: 17px;
+		stroke: currentColor;
+		stroke-linecap: square;
+		stroke-linejoin: miter;
+		stroke-width: 1.4;
+		width: 17px;
 	}
 	h1 {
-		font: 400 clamp(42px, 7vw, 76px)/1.03 var(--font-display);
-		letter-spacing: -.065em;
-		margin: 0;
+		color: var(--color-ink);
+		font: 550 clamp(3rem, 7.4vw, 5.8rem)/.98 var(--font-display);
+		letter-spacing: -.05em;
+		margin: clamp(42px, 7vw, 88px) 0 0;
+		max-width: 1000px;
 	}
-	.dek { color: var(--color-muted); font-size: 17px; line-height: 1.65; margin: 22px auto; max-width: 540px; }
-	time { color: var(--color-muted); font: 400 11px/1.4 var(--font-mono); }
+	.dek {
+		color: var(--color-ink);
+		font-size: clamp(16px, 1.5vw, 19px);
+		line-height: 1.6;
+		margin: 24px 0 0;
+		max-width: 62ch;
+	}
+	.article-meta {
+		color: var(--color-ink);
+		display: flex;
+		font-size: 11px;
+		font-weight: 650;
+		gap: 18px;
+		letter-spacing: .06em;
+		margin-top: 28px;
+		text-transform: uppercase;
+	}
+	.article-meta time { font-variant-numeric: tabular-nums; }
+	.article-register {
+		display: grid;
+		grid-template-columns: 1.2fr .8fr 1.4fr .8fr 1fr;
+		height: 12px;
+		margin: 44px calc(-1 * clamp(26px, 6.5vw, 92px)) 0;
+	}
+	.article-register span:nth-child(1) { background: var(--color-ink); }
+	.article-register span:nth-child(2) { background: var(--color-coral); }
+	.article-register span:nth-child(3) { background: var(--color-aqua); }
+	.article-register span:nth-child(4) { background: var(--color-mist); }
+	.article-register span:nth-child(5) { background: var(--color-teal); }
 	.article-body {
-		border-top: 1px solid var(--color-line);
-		font: 400 17px/1.85 var(--font-display);
+		font: 400 18px/1.82 var(--font-body);
 		margin: 0 auto;
-		max-width: 680px;
-		padding: 38px 0 70px;
+		max-width: 68ch;
+		padding: clamp(38px, 5.2vw, 70px) 0;
 	}
 	.article-body :global(p) { margin: 0 0 1.5em; }
+	.article-body :global(p:last-child) { margin-bottom: 0; }
 	.article-body :global(p:first-child)::first-letter {
-		color: var(--color-accent);
+		color: var(--color-teal);
 		float: left;
-		font-size: 3.6em;
-		line-height: .85;
-		margin: .05em .12em 0 0;
+		font: 600 4.3em/.76 var(--font-display);
+		margin: .12em .12em 0 0;
 	}
+	.article-body :global(h2),
+	.article-body :global(h3) {
+		font-family: var(--font-display);
+		font-weight: 550;
+		letter-spacing: -.035em;
+		line-height: 1.1;
+		margin: 1.7em 0 .55em;
+	}
+	.article-body :global(h2) { font-size: 2.1rem; }
+	.article-body :global(h3) { font-size: 1.55rem; }
+	.article-body :global(a) {
+		color: var(--color-teal);
+		text-decoration-thickness: 1px;
+	}
+	.article-body :global(a:hover) { color: var(--color-ink); }
 	.article-footer {
 		align-items: center;
 		border-top: 1px solid var(--color-line);
 		display: flex;
 		justify-content: space-between;
-		margin: 0 auto 80px;
-		max-width: 680px;
+		margin: 0 auto 82px;
+		max-width: 68ch;
 		padding-top: 20px;
 	}
-	.article-footer p { color: var(--color-ink); font-size: 12px; margin: 0; }
-	.article-footer p span { color: var(--color-muted); margin-right: 8px; }
+	.article-footer p {
+		color: var(--color-ink);
+		font-size: 12px;
+		line-height: 1.6;
+		margin: 0;
+	}
+	.article-footer p span { color: var(--color-teal); font-weight: 650; margin-right: 8px; }
 	@media (max-width: 640px) {
-		main { padding: 0 22px; }
-		.article-header { padding: 50px 0 40px; }
-		.eyebrow { margin-top: 42px; }
-		.dek { font-size: 15px; }
-		.article-body { font-size: 16px; }
-		.article-footer { align-items: flex-start; flex-direction: column; gap: 18px; margin-bottom: 56px; }
+		.article-header { margin-top: 22px; padding-inline: 25px; }
+		h1 { font-size: clamp(2.8rem, 11vw, 4.1rem); margin-top: 52px; }
+		.dek { font-size: 16px; }
+		.article-register { margin-inline: -25px; }
+		.article-body { font-size: 17px; }
+		.article-footer {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 20px;
+			margin-bottom: 58px;
+		}
 	}
 </style>
