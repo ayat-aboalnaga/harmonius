@@ -87,7 +87,7 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 		padding: 0 clamp(22px, 5.2vw, 76px);
 	}
 	.reading-progress {
-		background: var(--color-teal);
+		background: var(--color-teal-deep);
 		height: 4px;
 		inset: 0 auto auto 0;
 		position: fixed;
@@ -97,13 +97,13 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 		z-index: 5;
 	}
 	.article-header {
-		background: var(--color-mist);
+		background: var(--color-mist-wash);
 		margin-top: 38px;
 		padding: clamp(26px, 5vw, 64px) clamp(26px, 6.5vw, 92px) 0;
 	}
 	.back-link {
 		align-items: center;
-		color: var(--color-ink);
+		color: var(--color-ink-deep);
 		display: inline-flex;
 		font-size: 12px;
 		font-weight: 650;
@@ -121,21 +121,21 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 		width: 17px;
 	}
 	h1 {
-		color: var(--color-ink);
+		color: var(--color-ink-deep);
 		font: 550 clamp(3rem, 7.4vw, 5.8rem)/.98 var(--font-display);
 		letter-spacing: -.05em;
 		margin: clamp(42px, 7vw, 88px) 0 0;
 		max-width: 1000px;
 	}
 	.dek {
-		color: var(--color-ink);
+		color: var(--color-ink-deep);
 		font-size: clamp(16px, 1.5vw, 19px);
 		line-height: 1.6;
 		margin: 24px 0 0;
 		max-width: 62ch;
 	}
 	.article-meta {
-		color: var(--color-ink);
+		color: var(--color-ink-deep);
 		display: flex;
 		font-size: 11px;
 		font-weight: 650;
@@ -165,7 +165,7 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 	.article-body :global(p) { margin: 0 0 1.5em; }
 	.article-body :global(p:last-child) { margin-bottom: 0; }
 	.article-body :global(p:first-child)::first-letter {
-		color: var(--color-teal);
+		color: var(--color-teal-deep);
 		float: left;
 		font: 600 4.3em/.76 var(--font-display);
 		margin: .12em .12em 0 0;
@@ -181,10 +181,10 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 	.article-body :global(h2) { font-size: 2.1rem; }
 	.article-body :global(h3) { font-size: 1.55rem; }
 	.article-body :global(a) {
-		color: var(--color-teal);
+		color: var(--color-teal-deep);
 		text-decoration-thickness: 1px;
 	}
-	.article-body :global(a:hover) { color: var(--color-ink); }
+	.article-body :global(a:hover) { color: var(--color-ink-deep); }
 	.article-footer {
 		align-items: center;
 		border-top: 1px solid var(--color-line);
@@ -195,12 +195,12 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 		padding-top: 20px;
 	}
 	.article-footer p {
-		color: var(--color-ink);
+		color: var(--color-ink-deep);
 		font-size: 12px;
 		line-height: 1.6;
 		margin: 0;
 	}
-	.article-footer p span { color: var(--color-teal); font-weight: 650; margin-right: 8px; }
+	.article-footer p span { color: var(--color-teal-deep); font-weight: 650; margin-right: 8px; }
 	@media (max-width: 640px) {
 		.article-header { margin-top: 22px; padding-inline: 25px; }
 		h1 { font-size: clamp(2.8rem, 11vw, 4.1rem); margin-top: 52px; }

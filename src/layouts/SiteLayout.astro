@@ -13,7 +13,7 @@ const { title, description } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="description" content={description} />
-		<meta name="theme-color" content="#663732" />
+		<meta name="theme-color" content="#4a2521" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link
 			rel="preload"
@@ -79,13 +79,18 @@ const { title, description } = Astro.props;
 		font-display: swap;
 	}
 	:root {
-		--color-paper: #f8f3eb;
+		--color-paper: #fff9f1;
 		--color-ink: #663732;
+		--color-ink-deep: #4a2521;
 		--color-coral: #cc6d64;
+		--color-coral-wash: #f4d9d5;
 		--color-aqua: #64c3cc;
+		--color-aqua-wash: #d9eff0;
 		--color-mist: #98c7cc;
+		--color-mist-wash: #e3f0f1;
 		--color-teal: #326166;
-		--color-line: #98c7cc;
+		--color-teal-deep: #21484d;
+		--color-line: #6f989b;
 		--font-display: "Newsreader", Georgia, serif;
 		--font-body: "DM Sans", Arial, sans-serif;
 		color-scheme: light;
@@ -94,27 +99,27 @@ const { title, description } = Astro.props;
 	html {
 		background: var(--color-paper);
 		scroll-behavior: smooth;
-		scrollbar-color: var(--color-teal) var(--color-mist);
+		scrollbar-color: var(--color-teal-deep) var(--color-mist-wash);
 	}
 	body {
 		background: var(--color-paper);
-		color: var(--color-ink);
-		caret-color: var(--color-ink);
+		color: var(--color-ink-deep);
+		caret-color: var(--color-ink-deep);
 		font-family: var(--font-body);
 		font-size: 16px;
 		margin: 0;
 	}
 	::selection {
 		background: var(--color-aqua);
-		color: var(--color-ink);
+		color: var(--color-ink-deep);
 	}
 	a { color: inherit; text-underline-offset: .2em; }
 	a:focus-visible {
-		outline: 2px solid var(--color-teal);
+		outline: 2px solid var(--color-teal-deep);
 		outline-offset: 4px;
 	}
 	.site-header {
-		background: var(--color-ink);
+		background: var(--color-ink-deep);
 		color: var(--color-paper);
 	}
 	.header-inner, .footer-inner {
@@ -137,7 +142,7 @@ const { title, description } = Astro.props;
 	.mark {
 		align-items: center;
 		background: var(--color-aqua);
-		color: var(--color-ink);
+		color: var(--color-ink-deep);
 		display: inline-flex;
 		font: 600 13px/1 var(--font-display);
 		height: 34px;
@@ -171,7 +176,7 @@ const { title, description } = Astro.props;
 		width: 13px;
 	}
 	.site-footer {
-		background: var(--color-teal);
+		background: var(--color-teal-deep);
 		color: var(--color-paper);
 	}
 	.footer-inner {
@@ -181,7 +186,7 @@ const { title, description } = Astro.props;
 	.site-footer .wordmark { font-size: 16px; }
 	.site-footer .mark {
 		background: var(--color-aqua);
-		color: var(--color-ink);
+		color: var(--color-ink-deep);
 		height: 30px;
 		width: 30px;
 	}

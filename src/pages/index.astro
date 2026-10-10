@@ -132,7 +132,7 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 	}
 	.intro {
 		align-items: stretch;
-		background: var(--color-aqua);
+		background: var(--color-coral-wash);
 		display: grid;
 		gap: clamp(32px, 5vw, 72px);
 		grid-template-columns: minmax(0, 1.35fr) minmax(220px, .75fr);
@@ -141,7 +141,7 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 		position: relative;
 	}
 	.intro::after {
-		background: var(--color-coral);
+		background: var(--color-aqua);
 		content: "";
 		height: 10px;
 		position: absolute;
@@ -154,15 +154,15 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 		max-width: 760px;
 	}
 	h1 {
-		color: var(--color-ink);
+		color: var(--color-ink-deep);
 		font: 560 clamp(3rem, 5.8vw, 5.5rem)/.93 var(--font-display);
 		letter-spacing: -.055em;
 		margin: 0;
 		max-width: 760px;
 	}
-	h1 span { color: var(--color-teal); }
+	h1 span { color: var(--color-teal-deep); }
 	.intro-copy {
-		color: var(--color-ink);
+		color: var(--color-ink-deep);
 		font-size: clamp(16px, 1.25vw, 18px);
 		line-height: 1.65;
 		margin: 28px 0 0;
@@ -170,7 +170,7 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 	}
 	.hero-action {
 		align-items: center;
-		background: var(--color-ink);
+		background: var(--color-ink-deep);
 		color: var(--color-paper);
 		display: inline-flex;
 		font-size: 13px;
@@ -182,10 +182,10 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 		transition: background-color 180ms ease-out, color 180ms ease-out;
 	}
 	.hero-action:hover {
-		background: var(--color-teal);
+		background: var(--color-teal-deep);
 		color: var(--color-paper);
 	}
-	.hero-action:focus-visible { outline-color: var(--color-aqua); }
+	.hero-action:focus-visible { outline-color: var(--color-teal-deep); }
 	.hero-action svg, .post-signature svg {
 		fill: none;
 		height: 18px;
@@ -197,9 +197,10 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 	}
 	.proof-register {
 		align-self: center;
-		border-top: 1px solid var(--color-ink);
-		color: var(--color-ink);
-		padding-top: 14px;
+		background: var(--color-aqua);
+		border-top: 4px solid var(--color-teal-deep);
+		color: var(--color-ink-deep);
+		padding: 18px clamp(14px, 2vw, 24px);
 	}
 	.register-heading {
 		display: flex;
@@ -216,7 +217,7 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 	}
 	.swatch-list li {
 		align-items: center;
-		border-top: 1px solid rgb(102 55 50 / 30%);
+		border-top: 1px solid rgb(74 37 33 / 38%);
 		display: grid;
 		font-size: 12px;
 		gap: 10px;
@@ -250,7 +251,7 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 	}
 	.note-count {
 		align-items: baseline;
-		color: var(--color-teal);
+		color: var(--color-teal-deep);
 		display: inline-flex;
 		font-size: 11px;
 		font-weight: 600;
@@ -258,19 +259,19 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 		text-transform: uppercase;
 	}
 	.note-count span {
-		color: var(--color-ink);
+		color: var(--color-ink-deep);
 		font-size: 14px;
 		font-variant-numeric: tabular-nums;
 	}
 	.post-entry { border-bottom: 1px solid var(--color-line); }
 	.post-entry.featured {
-		background: var(--color-mist);
+		background: var(--color-aqua-wash);
 		margin-inline: calc(-1 * var(--shell-gutter));
 		padding-inline: var(--shell-gutter);
 	}
 	.post-link {
 		align-items: center;
-		color: var(--color-ink);
+		color: var(--color-ink-deep);
 		display: grid;
 		gap: clamp(16px, 3vw, 44px);
 		grid-template-columns: 42px minmax(0, 1fr) 38px;
@@ -279,7 +280,7 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 	}
 	.post-index {
 		align-self: start;
-		color: var(--color-teal);
+		color: var(--color-teal-deep);
 		font-size: 12px;
 		font-variant-numeric: tabular-nums;
 		font-weight: 650;
@@ -288,7 +289,7 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 	.post-content { display: grid; max-width: 790px; }
 	.post-meta {
 		align-items: center;
-		color: var(--color-ink);
+		color: var(--color-ink-deep);
 		display: flex;
 		font-size: 11px;
 		font-weight: 650;
@@ -310,7 +311,7 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 		max-width: 62ch;
 	}
 	.read-link {
-		color: var(--color-teal);
+		color: var(--color-teal-deep);
 		font-size: 12px;
 		font-weight: 700;
 		margin-top: 20px;
@@ -341,14 +342,14 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 	.post-link:hover .registration-rail,
 	.post-link:focus-visible .registration-rail { transform: scaleX(1); }
 	.empty-state {
-		color: var(--color-teal);
+		color: var(--color-teal-deep);
 		font-size: 16px;
 		line-height: 1.6;
 		padding: 32px 0;
 	}
 	.closing-note {
 		align-items: end;
-		background: var(--color-teal);
+		background: var(--color-teal-deep);
 		color: var(--color-paper);
 		display: flex;
 		justify-content: space-between;

@@ -3,11 +3,17 @@ name: Fieldnotes
 description: An independent journal about design and the everyday.
 colors:
   core-ink: "#663732"
+  deep-ink: "#4A2521"
   warm-coral: "#CC6D64"
+  coral-wash: "#F4D9D5"
   bright-aqua: "#64C3CC"
+  aqua-wash: "#D9EFF0"
   soft-mist: "#98C7CC"
+  mist-wash: "#E3F0F1"
   deep-teal: "#326166"
-  paper: "#f8f3eb"
+  dark-teal: "#21484D"
+  rule-teal: "#6F989B"
+  paper: "#FFF9F1"
 typography:
   display:
     fontFamily: "Newsreader, Georgia, serif"
@@ -37,18 +43,18 @@ spacing:
   compact-home-gutter: "18px"
 components:
   primary-action:
-    backgroundColor: "{colors.core-ink}"
+    backgroundColor: "{colors.deep-ink}"
     textColor: "{colors.paper}"
     typography: "DM Sans, 600, 13px"
     padding: "14px 17px"
   primary-action-hover:
-    backgroundColor: "{colors.deep-teal}"
+    backgroundColor: "{colors.dark-teal}"
     textColor: "{colors.paper}"
   masthead-link:
     textColor: "{colors.paper}"
     typography: "DM Sans, 600, 12px"
   featured-entry:
-    backgroundColor: "{colors.soft-mist}"
+    backgroundColor: "{colors.aqua-wash}"
     padding: "clamp(30px, 4.3vw, 58px) 0"
 ---
 
@@ -58,7 +64,7 @@ components:
 
 **Creative North Star: "The Color Proof Book"**
 
-Fieldnotes pairs oversized Newsreader headlines and flat, confident color plates with the small labels, numbered entries, and registration details of a working proof sheet. The homepage gives that frame the strongest color; the essay itself returns to warm paper, a narrow reading measure, and quiet typography.
+Fieldnotes pairs oversized Newsreader headlines and flat, confident color plates with the small labels, numbered entries, and registration details of a working proof sheet. The homepage sets a warm coral wash against a bright-aqua register; the essay itself returns to warm paper, a narrow reading measure, and quiet typography.
 
 The saved direction contract records “Color Proof Book,” candidate 7 of seven, with seed key `f3bbfd94`. That contract is the only direction provenance verified here; no archived roll receipt was available, so none is claimed. The shipped implementation is evidenced by [`SiteLayout.astro`](src/layouts/SiteLayout.astro), [`index.astro`](src/pages/index.astro), [`[slug].astro`](src/pages/journal/%5Bslug%5D.astro), and the local captures: [desktop](.impeccable/review/desktop.png), [mobile at 390×844](.impeccable/review/mobile.png), and [article mobile at 390×844](.impeccable/review/article-mobile.png). The homepage register stacks beneath the hero copy and fits its plate; the article frame and reading column also fit the mobile capture.
 
@@ -70,24 +76,24 @@ The saved direction contract records “Color Proof Book,” candidate 7 of seve
 
 ## Colors
 
-The five supplied colors form the proof palette; the implementation also uses a warm-paper neutral for the page ground and light text.
+The five supplied colors remain the proof palette. Light surface washes and deeper ink/teal text variants stay within those hues, making the cool and warm plates distinct without sacrificing readable contrast.
 
 ### Primary
-- **Core Ink** (`{colors.core-ink}`): Brand wordmark, primary text, headline, and the primary action surface.
+- **Core Ink** (`{colors.core-ink}`): The canonical brown swatch and proof-register color. Deep Ink (`{colors.deep-ink}`), a darker same-hue text variant, carries body copy, headlines, and the primary action surface.
 
 ### Secondary
-- **Warm Coral** (`{colors.warm-coral}`): A registration accent: the intro plate’s top mark, article register, and the post-link rail.
-- **Deep Teal** (`{colors.deep-teal}`): Deep counterpoint for the closing plate, links, focus contrast, and the reading-progress indicator.
+- **Warm Coral** (`{colors.warm-coral}`): A vivid registration accent in the article register and post-link rail. Its lighter Coral Wash (`{colors.coral-wash}`) provides a warm hero surface behind Deep Ink text.
+- **Deep Teal** (`{colors.deep-teal}`): The canonical teal swatch. Dark Teal (`{colors.dark-teal}`) is used for readable teal text, the closing plate, focus contrast, and the reading-progress indicator.
 
 ### Tertiary
-- **Bright Aqua** (`{colors.bright-aqua}`): Homepage proof plate, wordmark tile, and one of the five register swatches.
-- **Soft Mist** (`{colors.soft-mist}`): Featured journal row, article title frame, register swatch, and divider color.
+- **Bright Aqua** (`{colors.bright-aqua}`): Homepage register panel, wordmark tile, registration detail, and one of the five swatches; Deep Ink on Bright Aqua measures `6.48:1`.
+- **Soft Mist** (`{colors.soft-mist}`): Canonical register swatch. Its Mist Wash (`{colors.mist-wash}`) frames article metadata with Deep Ink at `11.41:1`; Aqua Wash (`{colors.aqua-wash}`) gives the featured journal entry a separate cool tint.
 
 ### Neutral
-- **Warm Paper** (`{colors.paper}`): Site background and light text on the ink and teal header/footer plates.
-- The article body remains on paper; rules use the mist token, while swatch separators use ink at 30% opacity.
+- **Warm Paper** (`{colors.paper}`): Brighter site ground and light text on the deep ink/teal header and footer plates. Deep Ink on Warm Paper measures `12.72:1`.
+- The article body remains on paper. Teal links use Dark Teal (`9.56:1` on paper); hairline rules use a muted teal for definition.
 
-**The Plate-to-Paper Rule.** Let strong color frame discovery and article metadata; return essay prose to the quiet paper ground.
+**The Warm/Cool Proof Rule.** Alternate coral-derived warmth and aqua/mist coolness for page rhythm; keep all small text in the deep ink or teal variants. Original palette values stay visible as swatches and registration marks.
 
 ## Typography
 
@@ -108,9 +114,9 @@ The five supplied colors form the proof palette; the implementation also uses a 
 
 The shared outer shell is centered and capped at `1440px`, with a fluid horizontal gutter (`clamp(22px, 5.2vw, 76px)`). On the homepage at `480px` and below, the shell gutter becomes `18px`. The desktop intro plate is an asymmetric two-column grid (`1.35fr / .75fr`) with the headline and copy first, and the color register opposite. At `760px` and below, it becomes a single column in that order; the register remains full-width within the plate. The supplied 390×844 capture verifies that the stacked register fits.
 
-The latest-writing list follows the hero with a full-bleed mist highlight for the first numbered entry. Its number, editorial copy, and registration-arrow signature occupy separate columns; tighter mobile widths reduce those columns and stack category/date metadata. The closing teal note changes from a horizontal pair to a vertical stack on narrow screens.
+The latest-writing list follows the hero with a full-bleed aqua wash for the first numbered entry. Its number, editorial copy, and registration-arrow signature occupy separate columns; tighter mobile widths reduce those columns and stack category/date metadata. The closing dark-teal note changes from a horizontal pair to a vertical stack on narrow screens.
 
-Article pages reuse the centered shell. The metadata and headline sit in an inset mist frame above a paper reading column capped at `68ch`; at `640px` and below, the frame and title tighten while the prose remains a single readable column. The local article-mobile capture shows the frame and measure fitting within 390×844. The site footer also changes from a horizontal row to a vertical stack at `640px`.
+Article pages reuse the centered shell. The metadata and headline sit in a light mist-wash frame above a paper reading column capped at `68ch`; at `640px` and below, the frame and title tighten while the prose remains a single readable column. The local article-mobile capture shows the frame and measure fitting within 390×844. The site footer also changes from a horizontal row to a vertical stack at `640px`.
 
 **The Narrow Measure Rule.** Keep long-form copy near the implemented `68ch` measure; the plate may be broad, but the essay is not.
 
