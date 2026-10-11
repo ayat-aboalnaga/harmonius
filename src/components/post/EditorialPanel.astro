@@ -1,0 +1,70 @@
+---
+interface Props {
+	variant?: 'pullquote' | 'insight' | 'note';
+	label?: string;
+}
+
+const { variant = 'note', label } = Astro.props;
+---
+
+<aside class:list={['editorial-panel', variant]} aria-label={label}>
+	{label && <span class="panel-label">{label}</span>}
+	<div class="panel-copy"><slot /></div>
+</aside>
+
+<style>
+	.editorial-panel {
+		margin: 38px auto 48px;
+		max-width: 68ch;
+	}
+	.panel-copy :global(p) { margin: 0; }
+	.pullquote {
+		background: var(--color-teal-deep);
+		color: var(--color-paper);
+		padding: clamp(26px, 4vw, 42px);
+	}
+	.pullquote .panel-copy {
+		font: 500 clamp(23px, 3vw, 34px)/1.28 var(--font-display);
+		letter-spacing: -.02em;
+		text-wrap: balance;
+	}
+	.pullquote .panel-copy :global(p)::before {
+		background: var(--color-action);
+		content: '';
+		display: block;
+		height: 3px;
+		margin-bottom: 20px;
+		width: 34px;
+	}
+	.insight {
+		background: var(--color-action);
+		color: var(--color-ink-on-action);
+		padding: 24px clamp(24px, 4vw, 36px);
+	}
+	.insight .panel-copy {
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 1.65;
+	}
+	.note {
+		background: var(--color-mist-wash);
+		color: var(--color-teal-deep);
+		padding: 22px clamp(22px, 4vw, 32px);
+	}
+	.note .panel-copy {
+		font-size: 14px;
+		line-height: 1.7;
+	}
+	.panel-label {
+		color: inherit;
+		display: block;
+		font-size: 10px;
+		font-weight: 700;
+		letter-spacing: .1em;
+		margin-bottom: 10px;
+		text-transform: uppercase;
+	}
+	@media (max-width: 640px) {
+		.editorial-panel { margin-block: 28px 36px; }
+	}
+</style>

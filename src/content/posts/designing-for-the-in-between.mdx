@@ -1,0 +1,127 @@
+---
+title: "Designing for the in-between"
+description: "The quiet transitions between the things we notice can shape an experience as much as its centrepiece."
+publishedAt: 2026-10-10
+category: "Perspective"
+tags:
+  - "Process"
+  - "Everyday"
+---
+
+import AnnotatedFigure from '../../components/post/AnnotatedFigure.astro';
+import DefinitionList from '../../components/post/DefinitionList.astro';
+import EditorialPanel from '../../components/post/EditorialPanel.astro';
+
+export const definitions = [
+  { term: 'Pause', description: 'A pause in a conversation.' },
+  { term: 'Passage', description: 'The route from one room to another.' },
+  {
+    term: 'Signal',
+    description: 'The small piece of information that arrives at exactly the right time.',
+  },
+];
+
+We tend to talk about design as a collection of moments. An experience is also
+made of the spaces between those moments.
+
+## Notice what sits between the moments
+
+<AnnotatedFigure
+  caption="An ordinary room, read as a sequence of small transitions."
+  aspectRatio="1000 / 500"
+  annotations={[
+    { label: 'Pause', detail: 'A conversation has room to breathe.', position: 'top-left' },
+    { label: 'Passage', detail: 'A route links one room to another.', position: 'top-right' },
+    { label: 'Signal', detail: 'A note arrives at the right moment.', position: 'bottom-right' },
+  ]}
+>
+  <svg
+    slot="art"
+    viewBox="0 0 1000 500"
+    role="img"
+    aria-label="Illustrated floor plan linking a conversation area, a quiet passage, and a small note by the doorway"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <rect width="1000" height="500" fill="#17302E" />
+    <g stroke="#326166" stroke-width="1" opacity=".55">
+      <path d="M0 125h1000M0 250h1000M0 375h1000M200 0v500M400 0v500M600 0v500M800 0v500" />
+    </g>
+    <g fill="#0F2A28" stroke="#326166" stroke-width="2">
+      <path d="M70 76h286v348H70zM356 76h288v348H356zM644 76h286v348H644z" />
+    </g>
+    <g fill="none" stroke="#E3F0F1" stroke-width="4">
+      <path d="M114 365V264q0-20 24-20h132q24 0 24 20v101M102 365h204M114 315h180" />
+      <path d="M738 365v-76q0-16 18-16h66q18 0 18 16v76M728 365h122" stroke="#F0A368" />
+    </g>
+    <path d="M265 294h148q34 0 34-34V220h168q46 0 46 42v40h94" fill="none" stroke="#64C3CC" stroke-dasharray="3 13" stroke-linecap="round" stroke-width="5" />
+    <g fill="#F0A368" stroke="#17302E" stroke-width="5">
+      <circle cx="265" cy="294" r="11" />
+      <circle cx="447" cy="220" r="11" />
+      <circle cx="755" cy="302" r="11" />
+    </g>
+    <g fill="none" stroke="#98C7CC" stroke-width="3">
+      <path d="M160 182q23-26 46 0t46 0" />
+      <path d="M779 179h72v48h-72zM789 193h51m-51 14h37" />
+    </g>
+    <path d="M498 336h40m-20-20v40" stroke="#326166" stroke-width="2" />
+  </svg>
+</AnnotatedFigure>
+
+<DefinitionList items={definitions} />
+
+<EditorialPanel variant="pullquote" label="A detail can change the whole">
+  These details rarely ask to be noticed, yet they often decide whether something feels considered.
+</EditorialPanel>
+
+## Make room for everyday transitions
+
+<AnnotatedFigure
+  caption="Attention moves through an ordinary day; the useful detail meets it along the way."
+  aspectRatio="1000 / 440"
+  annotations={[
+    { label: 'Notice', detail: 'Look beyond the headline feature.', position: 'top-left' },
+    { label: 'Fit', detail: 'Ask how a thing fits into an ordinary day.', position: 'top-right' },
+  ]}
+>
+  <svg
+    slot="art"
+    viewBox="0 0 1000 440"
+    role="img"
+    aria-label="A day represented as a path connecting a conversation, a doorway, and a timely note"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <rect width="1000" height="440" fill="#0F2A28" />
+    <g stroke="#1C3F3B" stroke-width="1">
+      <path d="M0 110h1000M0 220h1000M0 330h1000M200 0v440M400 0v440M600 0v440M800 0v440" />
+    </g>
+    <path d="M112 286h221q54 0 54-54t54-54h177q61 0 61 60t61 60h148" fill="none" stroke="#98C7CC" stroke-width="3" />
+    <path d="M112 286h221q54 0 54-54t54-54h177q61 0 61 60t61 60h148" fill="none" stroke="#64C3CC" stroke-dasharray="2 12" stroke-linecap="round" stroke-width="7" />
+    <g fill="#17302E" stroke="#E3F0F1" stroke-width="3">
+      <circle cx="151" cy="285" r="42" />
+      <circle cx="500" cy="179" r="42" />
+    </g>
+    <g fill="#F0A368">
+      <circle cx="138" cy="276" r="5" />
+      <circle cx="164" cy="276" r="5" />
+      <circle cx="151" cy="294" r="5" />
+      <circle cx="500" cy="179" r="9" />
+      <circle cx="741" cy="292" r="9" />
+    </g>
+    <path d="M719 249h145v92H719z" fill="#F4EEE2" />
+    <path d="M739 272h102m-102 19h80m-80 19h54" stroke="#326166" stroke-width="4" />
+    <path d="M868 282h36v59h-36" fill="none" stroke="#CC6D64" stroke-width="4" />
+    <path d="M151 327v30m-23 0h46m326-106v40m-22 0h44" fill="none" stroke="#326166" stroke-width="3" />
+  </svg>
+</AnnotatedFigure>
+
+<EditorialPanel variant="insight" label="Make room for people">
+  Paying attention to the in-between is a way of making room for people.
+</EditorialPanel>
+
+<EditorialPanel variant="note" label="A useful question">
+  How a thing fits into an ordinary day, what it asks of someone, and what it gives back.
+</EditorialPanel>
+
+<EditorialPanel variant="note" label="The quiet work">
+  That work is quieter than adding another flourish. It can also be the work that makes everything else feel inevitable.
+</EditorialPanel>

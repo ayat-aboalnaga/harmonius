@@ -125,10 +125,11 @@ return footer.
   factual copy about the Fieldnotes palette.
 - **Newsletter:** Disabled email and button controls with visible explanatory
   copy; no email is collected.
-- **Article:** A centered paper header leads into a full-width illustrated
-  feature, a responsive three-part moment strip, and a warm-paper reading
-  column. A fixed reading-progress indicator, tag summary, return link, and
-  compact footer close the story.
+- **Article:** Markdown/MDX articles can compose reusable annotated figures,
+  definition strips, and quote/insight/note panels. A centered paper header
+  leads into an illustrated feature, then visual scenes are interleaved with
+  short copy. A fixed reading-progress indicator, tag summary, return link,
+  and compact footer close the story.
 
 ## Shapes, depth, and motion
 

@@ -1,0 +1,134 @@
+---
+export interface Annotation {
+	label: string;
+	detail: string;
+	position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+}
+
+interface Props {
+	caption: string;
+	annotations?: Annotation[];
+	aspectRatio?: string;
+	wide?: boolean;
+}
+
+const { caption, annotations = [], aspectRatio = '16 / 7', wide = false } = Astro.props;
+---
+
+<figure class:list={['annotated-figure', { wide }]}>
+	<div class="scene" style={`--scene-ratio: ${aspectRatio}`}>
+		<slot name="art" />
+		{annotations.length > 0 && (
+			<ul class="annotations" aria-label="Illustration notes">
+				{annotations.map((annotation) => (
+					<li class:list={['annotation', annotation.position]}>
+						<strong>{annotation.label}</strong>
+						<span>{annotation.detail}</span>
+					</li>
+				))}
+			</ul>
+		)}
+	</div>
+	<figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+	.annotated-figure {
+		margin: 0 auto;
+		max-width: 1100px;
+		padding: 0 clamp(18px, 4vw, 48px);
+	}
+	.scene {
+		aspect-ratio: var(--scene-ratio);
+		background: var(--color-teal-deep);
+		isolation: isolate;
+		max-height: 560px;
+		overflow: hidden;
+		position: relative;
+	}
+	.wide {
+		max-width: none;
+		padding-inline: 0;
+	}
+	.wide .scene { max-height: none; }
+	.scene :global(svg) {
+		display: block;
+		height: 100%;
+		width: 100%;
+	}
+	.annotations {
+		inset: 0;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		pointer-events: none;
+		position: absolute;
+	}
+	.annotation {
+		background: var(--color-paper);
+		color: var(--color-teal-deep);
+		display: grid;
+		gap: 3px;
+		max-width: min(220px, 26%);
+		padding: 10px 13px 11px;
+		position: absolute;
+	}
+	.annotation::after {
+		background: var(--color-action);
+		content: '';
+		height: 2px;
+		position: absolute;
+		width: 20px;
+	}
+	.annotation strong {
+		color: var(--color-teal);
+		font-size: 9px;
+		letter-spacing: .1em;
+		text-transform: uppercase;
+	}
+	.annotation span {
+		font-size: 12px;
+		font-weight: 550;
+		line-height: 1.4;
+	}
+	.top-left { left: 3%; top: 8%; }
+	.top-left::after { bottom: -7px; right: -10px; transform: rotate(35deg); }
+	.top-right { right: 3%; top: 8%; }
+	.top-right::after { bottom: -7px; left: -10px; transform: rotate(-35deg); }
+	.bottom-left { bottom: 8%; left: 3%; }
+	.bottom-left::after { right: -10px; top: -7px; transform: rotate(-35deg); }
+	.bottom-right { bottom: 8%; right: 3%; }
+	.bottom-right::after { left: -10px; top: -7px; transform: rotate(35deg); }
+	figcaption {
+		color: var(--color-teal);
+		font-size: 13px;
+		line-height: 1.6;
+		margin: 0 auto;
+		max-width: 70ch;
+		padding: 12px 8px 40px;
+		text-align: center;
+	}
+	@media (max-width: 640px) {
+		.annotated-figure { padding-inline: 16px; }
+		.scene { max-height: none; }
+		.annotations {
+			background: var(--color-teal-deep);
+			display: grid;
+			gap: 1px;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			height: auto;
+			padding: 1px;
+			position: static;
+		}
+		.annotation {
+			max-width: none;
+			min-height: 68px;
+			padding: 12px;
+			position: static;
+		}
+		.annotation:last-child:nth-child(odd) { grid-column: 1 / -1; }
+		.annotation::after { display: none; }
+		.annotation span { font-size: 11px; }
+		figcaption { padding-bottom: 30px; }
+	}
+</style>

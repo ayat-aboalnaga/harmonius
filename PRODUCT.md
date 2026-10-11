@@ -29,7 +29,9 @@ is not yet established.
 ## Operating Context
 
 Readers browse the latest published notes, open an article, and return to the
-journal. Editors add articles as Markdown posts.
+journal. Editors add articles as Markdown or MDX posts, using reusable
+components for annotated illustrations, definitions, and editorial callouts
+when useful.
 
 ## Capabilities and Constraints
 

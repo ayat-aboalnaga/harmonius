@@ -1,0 +1,67 @@
+---
+interface Definition {
+	term: string;
+	description: string;
+}
+
+interface Props {
+	items: Definition[];
+}
+
+const { items } = Astro.props;
+---
+
+<dl class="definition-list">
+	{items.map((item) => (
+		<div class="definition">
+			<dt>{item.term}</dt>
+			<dd>{item.description}</dd>
+		</div>
+	))}
+</dl>
+
+<style>
+	.definition-list {
+		background: var(--color-teal);
+		display: grid;
+		gap: 1px;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		margin: 0 auto 42px;
+		max-width: 1100px;
+		padding: 1px;
+	}
+	.definition {
+		background: var(--color-paper);
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		min-height: 150px;
+		padding: 24px 22px;
+	}
+	.definition:nth-child(2) { background: var(--color-mist-wash); }
+	.definition:nth-child(3) {
+		background: var(--color-action);
+		color: var(--color-ink-on-action);
+	}
+	dt {
+		color: var(--color-ink);
+		font: italic 500 22px/1.2 var(--font-display);
+	}
+	.definition:nth-child(2) dt { color: var(--color-teal); }
+	.definition:nth-child(3) dt { color: var(--color-ink-on-action); }
+	dd {
+		color: var(--color-ink-deep);
+		font-size: 13px;
+		line-height: 1.65;
+		margin: 0;
+	}
+	.definition:nth-child(2) dd,
+	.definition:nth-child(3) dd { color: var(--color-teal-deep); }
+	@media (max-width: 700px) {
+		.definition-list {
+			grid-template-columns: 1fr;
+			margin-inline: 16px;
+		}
+		.definition { min-height: 0; }
+	}
+</style>
