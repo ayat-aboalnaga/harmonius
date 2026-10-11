@@ -13,7 +13,7 @@ const { title, description } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="description" content={description} />
-		<meta name="theme-color" content="#21484d" />
+		<meta name="theme-color" content="#17302e" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link
 			rel="preload"
@@ -95,7 +95,7 @@ const { title, description } = Astro.props;
 		font-display: swap;
 	}
 	:root {
-		--color-paper: #fff9f1;
+		--color-paper: #f4eee2;
 		--color-ink: #663732;
 		--color-ink-deep: #4a2521;
 		--color-ink-on-coral: #2b1715;
@@ -106,9 +106,9 @@ const { title, description } = Astro.props;
 		--color-mist: #98c7cc;
 		--color-mist-wash: #e3f0f1;
 		--color-teal: #326166;
-		--color-teal-deep: #21484d;
-		--color-teal-night: #193a3e;
-		--color-dark-teal: #21484d;
+		--color-teal-deep: #17302e;
+		--color-teal-night: #0f2a28;
+		--color-dark-teal: #17302e;
 		--color-line: #6f989b;
 		--font-display: "Newsreader", Georgia, serif;
 		--font-body: "DM Sans", Arial, sans-serif;
@@ -150,13 +150,13 @@ const { title, description } = Astro.props;
 		align-items: center;
 		display: flex;
 		justify-content: space-between;
-		min-height: 60px;
+		min-height: 68px;
 	}
 	.wordmark {
 		align-items: center;
 		color: inherit;
 		display: inline-flex;
-		font: 650 18px/1 var(--font-display);
+		font: 600 22px/1 var(--font-display);
 		gap: 11px;
 		letter-spacing: -.025em;
 		text-decoration: none;
@@ -174,13 +174,13 @@ const { title, description } = Astro.props;
 	.site-header nav {
 		align-items: center;
 		display: flex;
-		gap: clamp(17px, 2.6vw, 36px);
+		gap: clamp(17px, 2.4vw, 32px);
 	}
 	.site-header nav a {
 		align-items: center;
 		color: var(--color-paper);
 		display: inline-flex;
-		font-size: 11px;
+		font-size: 12px;
 		font-weight: 650;
 		text-decoration: none;
 	}
@@ -188,8 +188,8 @@ const { title, description } = Astro.props;
 	.site-header nav .header-subscribe {
 		background: var(--color-coral);
 		color: var(--color-ink-on-coral);
-		min-height: 36px;
-		padding: 0 16px;
+		min-height: 40px;
+		padding: 0 20px;
 	}
 	.site-header nav .header-subscribe:hover {
 		background: var(--color-aqua);
