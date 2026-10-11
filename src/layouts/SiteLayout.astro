@@ -100,6 +100,8 @@ const { title, description } = Astro.props;
 		--color-ink-deep: #4a2521;
 		--color-ink-on-coral: #2b1715;
 		--color-coral: #cc6d64;
+		--color-action: #f0a368;
+		--color-ink-on-action: #17302e;
 		--color-coral-wash: #f4d9d5;
 		--color-aqua: #64c3cc;
 		--color-aqua-wash: #d9eff0;
@@ -186,14 +188,14 @@ const { title, description } = Astro.props;
 	}
 	.site-header nav a:hover { color: var(--color-mist); }
 	.site-header nav .header-subscribe {
-		background: var(--color-coral);
-		color: var(--color-ink-on-coral);
+		background: var(--color-action);
+		color: var(--color-ink-on-action);
 		min-height: 40px;
 		padding: 0 20px;
 	}
 	.site-header nav .header-subscribe:hover {
 		background: var(--color-aqua);
-		color: var(--color-ink-on-coral);
+		color: var(--color-ink-on-action);
 	}
 	.site-header a:focus-visible, .site-footer a:focus-visible {
 		outline-color: var(--color-mist);

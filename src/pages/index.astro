@@ -57,9 +57,6 @@ const palette = [
 					</svg>
 				</div>
 			</div>
-			<div class="hero-rule" aria-hidden="true">
-				<span></span><span></span><span></span><span></span><span></span>
-			</div>
 		</section>
 
 		<section class="journal shell" aria-labelledby="journal-title">
@@ -252,12 +249,12 @@ const palette = [
 		width: 17px;
 	}
 	.action-primary {
-		background: var(--color-coral);
-		color: var(--color-ink-on-coral);
+		background: var(--color-action);
+		color: var(--color-ink-on-action);
 	}
 	.action-primary:hover {
 		background: var(--color-aqua);
-		color: var(--color-ink-on-coral);
+		color: var(--color-ink-on-action);
 	}
 	.action-secondary {
 		border: 1px solid rgb(227 240 241 / 45%);
@@ -304,16 +301,6 @@ const palette = [
 		fill: var(--color-mist);
 		stroke: none;
 	}
-	.hero-rule {
-		display: grid;
-		grid-template-columns: 1.1fr .9fr 1.2fr .8fr 1fr;
-		height: 6px;
-	}
-	.hero-rule span:nth-child(1) { background: var(--color-ink); }
-	.hero-rule span:nth-child(2) { background: var(--color-coral); }
-	.hero-rule span:nth-child(3) { background: var(--color-aqua); }
-	.hero-rule span:nth-child(4) { background: var(--color-mist); }
-	.hero-rule span:nth-child(5) { background: var(--color-teal); }
 	.journal {
 		padding-bottom: 72px;
 		padding-top: clamp(76px, 7vw, 96px);
@@ -404,7 +391,7 @@ const palette = [
 	}
 	.post-meta time { font-variant-numeric: tabular-nums; }
 	.card-copy h3 {
-		color: var(--color-ink-deep);
+		color: var(--color-teal-deep);
 		font: 540 clamp(1.35rem, 2.2vw, 1.8rem)/1.12 var(--font-display);
 		letter-spacing: -.025em;
 		margin: 13px 0 0;
@@ -540,10 +527,10 @@ const palette = [
 	.newsletter-preview input::placeholder { color: var(--color-dark-teal); opacity: 1; }
 	.newsletter-preview input:disabled { cursor: not-allowed; opacity: .8; }
 	.newsletter-preview button {
-		background: var(--color-coral);
+		background: var(--color-action);
 		border: 0;
 		border-radius: 0;
-		color: var(--color-ink-on-coral);
+		color: var(--color-ink-on-action);
 		font: 650 11px var(--font-body);
 		min-height: 44px;
 		padding: 0 16px;

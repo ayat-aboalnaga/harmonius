@@ -6,6 +6,8 @@ colors:
   deep-ink: "#4A2521"
   ink-on-coral: "#2B1715"
   warm-coral: "#CC6D64"
+  warm-action: "#F0A368"
+  ink-on-action: "#17302E"
   coral-wash: "#F4D9D5"
   bright-aqua: "#64C3CC"
   aqua-wash: "#D9EFF0"
@@ -38,8 +40,8 @@ spacing:
   page-gutter: "clamp(22px, 3.6vw, 48px)"
 components:
   primary-action:
-    backgroundColor: "{colors.warm-coral}"
-    textColor: "{colors.deep-ink}"
+    backgroundColor: "{colors.warm-action}"
+    textColor: "{colors.ink-on-action}"
     typography: "DM Sans, 650, 14px"
     padding: "15px 26px"
   masthead-link:
@@ -70,12 +72,14 @@ explicit visual previews rather than published content or live features.
 ## Colors
 
 The five committed brand colors remain visible as palette bars and illustration
-accents. Deep Teal (`{colors.dark-teal}`) and Warm Paper (`{colors.paper}`)
+accents. Warm action orange (`{colors.warm-action}`) follows the supplied
+reference on primary buttons; coral remains the Fieldnotes mark and illustration
+accent. Deep Teal (`{colors.dark-teal}`) and Warm Paper (`{colors.paper}`)
 establish the large surfaces; Deep Ink (`{colors.deep-ink}`) carries readable
-text on paper; a darker same-hue ink (`{colors.ink-on-coral}`) keeps small
-labels readable on coral. Coral, aqua, and mist articulate the illustrations,
-actions, and fine details. Lighter washes are reserved for secondary surfaces.
-Small text on colored surfaces uses paper, mist, or deep ink for contrast.
+text on paper; a darker same-hue ink (`{colors.ink-on-action}`) keeps button
+labels readable on orange. Aqua and mist articulate illustrations and details.
+Lighter washes are reserved for secondary surfaces. Small text on colored
+surfaces uses paper, mist, or dark teal for contrast.
 
 ## Typography
 
@@ -91,8 +95,8 @@ Both font files are served locally and preloaded by `SiteLayout.astro`.
 ## Layout
 
 The homepage begins with a full-width dark hero: editorial copy and actions sit
-beside a restrained chair, lamp, and plant study. A thin five-color register
-closes the hero. The warm-paper journal area uses an open three-column grid: the real
+beside a restrained chair, lamp, and plant study. The warm-paper journal area
+uses an open three-column grid: the real
 published note links to its article route, while any preview-only guide or
 studio panels are visibly identified and have no false action. The palette
 feature switches back to deep teal, followed by a centered paper signup preview
@@ -108,7 +112,7 @@ use the same dark editorial frame above a warm paper reading column capped at
 ## Components and interaction
 
 - **Masthead:** Dark teal field, square coral `F.` tile, compact links, and a
-  coral Subscribe link to the clearly marked signup preview.
+  warm-orange Subscribe link to the clearly marked signup preview.
 - **Hero:** Large Newsreader statement, concise existing product copy, two
   working destinations, and a chair, lamp, and plant line illustration.
 - **Journal entry:** Real published content only; a short coral registration
