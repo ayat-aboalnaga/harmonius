@@ -12,9 +12,11 @@ We tend to talk about design as a collection of moments: the first impression, t
 beautiful object, the carefully composed image. But an experience is also made of
 the spaces between those moments.
 
-A pause in a conversation. The route from one room to another. The small piece of
-information that arrives at exactly the right time. These details rarely ask to be
-noticed, yet they often decide whether something feels considered.
+<ul class="article-moments">
+  <li>A pause in a conversation.</li>
+  <li>The route from one room to another.</li>
+  <li>The small piece of information that arrives at exactly the right time. These details rarely ask to be noticed, yet they often decide whether something feels considered.</li>
+</ul>
 
 Paying attention to the in-between is a way of making room for people. It means
 looking beyond the headline feature and asking how a thing fits into an ordinary

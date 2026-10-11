@@ -106,8 +106,10 @@ At tablet widths, the hero and palette feature stack; the journal grid changes
 to two columns. At phone widths, the hero art follows the copy and the journal
 grid becomes one column. Content sections use fluid gutters and a `1280px`
 maximum width; the shared header and footer expand to `1440px`. Article pages
-use the same dark editorial frame above a warm paper reading column capped at
-`68ch`.
+open with a centered title and metadata on warm paper, followed by a full-width
+deep-teal room illustration and caption. The article keeps a `68ch` reading
+measure, with a three-part accent strip for highlighted moments and a compact
+return footer.
 
 ## Components and interaction
 
@@ -123,8 +125,10 @@ use the same dark editorial frame above a warm paper reading column capped at
   factual copy about the Fieldnotes palette.
 - **Newsletter:** Disabled email and button controls with visible explanatory
   copy; no email is collected.
-- **Article:** Metadata and title sit on deep teal; the article remains on
-  warm paper, with a fixed reading-progress indicator and return navigation.
+- **Article:** A centered paper header leads into a full-width illustrated
+  feature, a responsive three-part moment strip, and a warm-paper reading
+  column. A fixed reading-progress indicator, tag summary, return link, and
+  compact footer close the story.
 
 ## Shapes, depth, and motion
 

@@ -1,0 +1,107 @@
+---
+interface Props {
+	caption: string;
+}
+
+const { caption } = Astro.props;
+---
+
+<figure class="post-hero">
+	<svg
+		viewBox="0 0 900 390"
+		role="img"
+		aria-labelledby="room-title room-description"
+		preserveAspectRatio="xMidYMid meet"
+	>
+		<title id="room-title">A quiet living room illustration</title>
+		<desc id="room-description">
+			A sofa, accent chair, side table, lamp, window, and potted plant drawn in warm
+			lines against a deep teal wall.
+		</desc>
+		<rect x="0" y="0" width="900" height="390" fill="var(--color-teal-deep)" />
+		<line x1="0" y1="330" x2="900" y2="330" stroke="var(--color-teal)" stroke-width="1.5" />
+		<rect
+			x="60"
+			y="60"
+			width="160"
+			height="220"
+			fill="none"
+			stroke="var(--color-teal)"
+			stroke-width="2"
+		/>
+		<line x1="140" y1="60" x2="140" y2="280" stroke="var(--color-teal)" stroke-width="2" />
+		<path
+			d="M260 330V250q0-20 25-20h195q25 0 25 20v80M250 330h265M260 280h245"
+			fill="none"
+			stroke="var(--color-mist-wash)"
+			stroke-width="2.5"
+		/>
+		<rect x="290" y="250" width="46" height="46" rx="3" fill="var(--color-action)" />
+		<rect x="350" y="255" width="40" height="40" rx="3" fill="var(--color-coral)" />
+		<path
+			d="M580 330v-70q0-15 18-15h62q18 0 18 15v70M572 330h114M580 285h98"
+			fill="none"
+			stroke="var(--color-action)"
+			stroke-width="2.5"
+		/>
+		<line x1="730" y1="330" x2="730" y2="140" stroke="var(--color-mist-wash)" stroke-width="2" />
+		<path
+			d="M700 140h60l-12-40h-36z"
+			fill="none"
+			stroke="var(--color-mist-wash)"
+			stroke-width="2"
+		/>
+		<rect
+			x="705"
+			y="290"
+			width="50"
+			height="40"
+			fill="none"
+			stroke="var(--color-mist-wash)"
+			stroke-width="2"
+		/>
+		<path
+			d="M120 330v-30q0-10 10-10h20q10 0 10 10v30M140 290q-12-40-30-55m30 55q5-50 28-72m-28 72q18-35 38-42"
+			fill="none"
+			stroke="var(--color-mist)"
+			stroke-linecap="round"
+			stroke-width="2"
+		/>
+		<ellipse
+			cx="460"
+			cy="335"
+			rx="260"
+			ry="16"
+			fill="none"
+			stroke="var(--color-teal)"
+			stroke-width="2"
+		/>
+	</svg>
+	<figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+	.post-hero {
+		margin: 0;
+	}
+	svg {
+		background: var(--color-teal-deep);
+		display: block;
+		height: auto;
+		max-height: 560px;
+		aspect-ratio: 16 / 7;
+		width: 100%;
+	}
+	figcaption {
+		color: var(--color-teal);
+		font-size: 13px;
+		line-height: 1.6;
+		margin: 0 auto;
+		max-width: 880px;
+		padding: 12px 24px 52px;
+		text-align: center;
+	}
+	@media (max-width: 640px) {
+		figcaption { padding-bottom: 38px; }
+	}
+</style>
