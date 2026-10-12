@@ -1,0 +1,43 @@
+---
+title: "Scale is not proportion"
+description: "A well-proportioned object can still overwhelm its setting. Scale asks how big something feels beside its context."
+publishedAt: 2026-10-12
+category: "Design principles"
+tags:
+  - "Scale"
+  - "Human factors"
+draft: true
+---
+
+import AnnotatedFigure from '../../components/post/AnnotatedFigure.astro';
+
+People often use “scale” and “proportion” interchangeably, then overlook a sofa that technically fits but swallows the room.
+
+<AnnotatedFigure caption="The sofa's own proportions may be orderly; its scale crowds the room and its occupants." aspectRatio="1000 / 430">
+  <svg slot="art" viewBox="0 0 1000 430" role="img" aria-label="An oversized sofa fills a small room, crowding a tiny seated human figure and narrowing the path" preserveAspectRatio="xMidYMid meet">
+    <rect width="1000" height="430" fill="#17302E" />
+    <path d="M130 76h740v262H130z" fill="#0F2A28" stroke="#326166" stroke-width="4" />
+    <path d="M195 290v-95q0-25 25-25h500q25 0 25 25v95m-550-52h600m-560 52v42m500-42v42" fill="#CC6D64" stroke="#E3F0F1" stroke-width="6" />
+    <circle cx="795" cy="260" r="12" fill="#F0A368" />
+    <path d="M795 272v38m-16-22h32m-16 22-14 26m14-26 14 26" stroke="#F0A368" stroke-width="5" stroke-linecap="round" />
+    <path d="M180 354h600" stroke="#64C3CC" stroke-width="3" stroke-dasharray="7 10" />
+  </svg>
+</AnnotatedFigure>
+
+Proportion compares parts within a composition; scale compares size against a reference. Catalog photos often hide that reference, while a plan can make clearance look more generous than it feels at human height.
+
+## Use a meaningful reference
+
+Check furniture against people, doors, ceiling height, and circulation. Scale can feel intimate or monumental, but it should be a deliberate relationship to the room and its use.
+
+<AnnotatedFigure caption="A human figure and clear walking route make the furniture's scale legible." aspectRatio="1000 / 430">
+  <svg slot="art" viewBox="0 0 1000 430" role="img" aria-label="A smaller sofa leaves generous circulation around a human figure in a well-scaled room" preserveAspectRatio="xMidYMid meet">
+    <rect width="1000" height="430" fill="#17302E" />
+    <path d="M130 76h740v262H130z" fill="#0F2A28" stroke="#326166" stroke-width="4" />
+    <path d="M215 288v-72q0-20 22-20h340q22 0 22 20v72m-380-37h420m-385 37v42m350-42v42" fill="#64C3CC" stroke="#E3F0F1" stroke-width="5" />
+    <circle cx="750" cy="205" r="17" fill="#F0A368" />
+    <path d="M750 222v62m-25-36h50m-25 36-20 42m20-42 20 42" stroke="#F0A368" stroke-width="7" stroke-linecap="round" />
+    <path d="M628 323h130m-14-11 14 11-14 11" fill="none" stroke="#CC6D64" stroke-width="4" />
+    <path d="M180 354h640" stroke="#326166" stroke-width="3" />
+  </svg>
+</AnnotatedFigure>

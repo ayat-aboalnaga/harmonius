@@ -1,0 +1,44 @@
+---
+title: "Form is not a silhouette"
+description: "A handsome outline can still leave a room feeling flat. Form is the three-dimensional presence behind the contour."
+publishedAt: 2026-10-12
+category: "Design principles"
+tags:
+  - "Form"
+  - "Space"
+draft: true
+---
+
+import AnnotatedFigure from '../../components/post/AnnotatedFigure.astro';
+
+“Form” is often used to mean an object’s outline or its decorative shape.
+
+<AnnotatedFigure caption="An elegant profile is only the edge of the story." aspectRatio="1000 / 430">
+  <svg slot="art" viewBox="0 0 1000 430" role="img" aria-label="A flat furniture elevation with a chair and lamp drawn as outlines, with no visible depth" preserveAspectRatio="xMidYMid meet">
+    <rect width="1000" height="430" fill="#17302E" />
+    <path d="M90 334H910" stroke="#326166" stroke-width="3" />
+    <g fill="none" stroke="#E3F0F1" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M270 333V184q0-24 26-24h180q26 0 26 24v149M252 262h268M283 333v43m208-43v43" />
+      <path d="M680 333V126m-55 0h110l-20-65h-70zM648 333h64" />
+    </g>
+    <path d="M100 355H900" stroke="#F0A368" stroke-width="3" stroke-dasharray="8 12" />
+  </svg>
+</AnnotatedFigure>
+
+The shortcut comes from elevation drawings and catalog images, where a complex object is reduced to a readable outline. But a profile cannot tell us how much space an object occupies, how it turns, or how it meets the room.
+
+## Read the volume, not only the edge
+
+Form is three-dimensional mass: its height, width, depth, and relationship to surrounding space. Look for how light, shadow, and viewpoint reveal a volume.
+
+<AnnotatedFigure caption="Depth, overlap, and cast shadow make the chair read as a volume." aspectRatio="1000 / 430">
+  <svg slot="art" viewBox="0 0 1000 430" role="img" aria-label="A three-dimensional chair in perspective with visible seat depth, side plane, and cast shadow" preserveAspectRatio="xMidYMid meet">
+    <rect width="1000" height="430" fill="#17302E" />
+    <path d="M100 348H900M100 348l170-80m460 80 170-80" stroke="#326166" stroke-width="2" />
+    <path d="M314 192l176-25 84 50-180 30z" fill="#64C3CC" stroke="#E3F0F1" stroke-width="5" />
+    <path d="M394 247l180-30v94l-180 31z" fill="#326166" stroke="#E3F0F1" stroke-width="5" />
+    <path d="M314 192v89q0 16 16 14l48-8v-94M314 281l80 13M394 342v-95m180 64v-94" fill="none" stroke="#E3F0F1" stroke-width="5" />
+    <path d="M390 346l215-34 127 38-209 40z" fill="#0F2A28" opacity=".72" />
+    <path d="M665 128l38-16v90l-38 18z" fill="#F0A368" opacity=".8" />
+  </svg>
+</AnnotatedFigure>

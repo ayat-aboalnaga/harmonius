@@ -1,0 +1,44 @@
+---
+title: "Color is more than a paint chip"
+description: "Choosing a favorite hue is only a beginning. Color changes with value, intensity, neighbors, and light."
+publishedAt: 2026-10-12
+category: "Design principles"
+tags:
+  - "Color"
+  - "Material"
+draft: true
+---
+
+import AnnotatedFigure from '../../components/post/AnnotatedFigure.astro';
+
+Color is often treated as a single decision: pick a hue, paint every surface, and expect the room to feel resolved.
+
+<AnnotatedFigure caption="One vivid hue applied everywhere can flatten differences between surfaces and objects." aspectRatio="1000 / 430">
+  <svg slot="art" viewBox="0 0 1000 430" role="img" aria-label="A room where walls, sofa, rug, and lamp are all the same saturated coral color" preserveAspectRatio="xMidYMid meet">
+    <rect width="1000" height="430" fill="#CC6D64" />
+    <path d="M120 92h760v236H120z" fill="#CC6D64" stroke="#F0A368" stroke-width="4" />
+    <path d="M120 92l150-52h760l-150 52M880 92l150-52v236l-150 52" fill="#F0A368" opacity=".75" />
+    <path d="M245 300v-84q0-20 24-20h225q24 0 24 20v84m-290-37h320m-285 37v35m245-35v35" fill="#CC6D64" stroke="#F4EEE2" stroke-width="6" />
+    <path d="M176 329h570" stroke="#F0A368" stroke-width="28" />
+    <path d="M680 274v-115m-39 0h78l-14-47h-50z" fill="#CC6D64" stroke="#F4EEE2" stroke-width="5" />
+  </svg>
+</AnnotatedFigure>
+
+Paint catalogs encourage us to compare isolated swatches under showroom light. Color perception is relational: a surface changes in appearance beside another color, in shadow, and under different sources of light.
+
+## Compose relationships
+
+Consider hue, value (lightness or darkness), and intensity (muted or vivid) together. A restrained palette can still have contrast, and a small accent can feel bright because of what surrounds it.
+
+<AnnotatedFigure caption="A dark field, softened wall, pale upholstery, and small warm accent give color several roles." aspectRatio="1000 / 430">
+  <svg slot="art" viewBox="0 0 1000 430" role="img" aria-label="A calm interior palette with deep teal floor, pale wall, mist-colored sofa, and small coral cushion" preserveAspectRatio="xMidYMid meet">
+    <rect width="1000" height="430" fill="#17302E" />
+    <path d="M120 90h760v238H120z" fill="#98C7CC" />
+    <path d="M120 90l150-52h760l-150 52" fill="#E3F0F1" />
+    <path d="M880 90l150-52v238l-150 52" fill="#326166" />
+    <path d="M245 300v-84q0-20 24-20h225q24 0 24 20v84m-290-37h320m-285 37v35m245-35v35" fill="#E3F0F1" stroke="#326166" stroke-width="5" />
+    <path d="M405 208h60v54h-60z" fill="#CC6D64" />
+    <path d="M176 329h570" stroke="#326166" stroke-width="25" />
+    <circle cx="736" cy="144" r="23" fill="#F0A368" />
+  </svg>
+</AnnotatedFigure>

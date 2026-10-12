@@ -1,0 +1,41 @@
+---
+title: "Shape lives in the outline"
+description: "A shape is not the object itself: it is the bounded two-dimensional area we read in a plane."
+publishedAt: 2026-10-12
+category: "Design principles"
+tags:
+  - "Shape"
+  - "Space"
+draft: true
+---
+
+import AnnotatedFigure from '../../components/post/AnnotatedFigure.astro';
+
+Design talk often calls a sculptural chair or curved cabinet a “shape,” as if the word simply meant an unusual object.
+
+<AnnotatedFigure caption="A curving chair may be striking, but this view still reads its three-dimensional form." aspectRatio="1000 / 430">
+  <svg slot="art" viewBox="0 0 1000 430" role="img" aria-label="A sculptural chair in perspective with a curved back, seat, and visible legs" preserveAspectRatio="xMidYMid meet">
+    <rect width="1000" height="430" fill="#17302E" />
+    <path d="M170 350H830" stroke="#326166" stroke-width="3" />
+    <path d="M340 235q-12-113 70-128 80-16 104 58l12 76M350 236q72-38 168-11l65 26-171 36z" fill="#326166" stroke="#E3F0F1" stroke-width="6" />
+    <path d="M412 284v83m171-57v57m-181-74 63 18" fill="none" stroke="#F0A368" stroke-width="8" stroke-linecap="round" />
+    <path d="M360 251q84-41 189-13" fill="none" stroke="#64C3CC" stroke-width="4" />
+  </svg>
+</AnnotatedFigure>
+
+That mix-up comes from everyday speech, where “shape” can describe nearly any visible outline. In design, the useful distinction is between a plane’s boundary and an object’s volume.
+
+## Trace the bounded area
+
+Shape is a two-dimensional figure defined by its outline or by a change in tone, color, or texture. In a room, notice both the shape of an object’s face and the shaped negative space around it.
+
+<AnnotatedFigure caption="The same chair becomes a clear plane-shape in elevation; the surrounding empty area has a shape too." aspectRatio="1000 / 430">
+  <svg slot="art" viewBox="0 0 1000 430" role="img" aria-label="A chair shown front-on as a flat colored silhouette, with the negative space around it highlighted" preserveAspectRatio="xMidYMid meet">
+    <rect width="1000" height="430" fill="#0F2A28" />
+    <path d="M90 88H910V342H90z" fill="#17302E" stroke="#326166" stroke-width="3" />
+    <path d="M120 112h195v205H120zm565 0h195v205H685z" fill="#64C3CC" opacity=".34" />
+    <path d="M390 145h220v105H390zM365 250h270v35H365zM390 285h32v50h-32zm188 0h32v50h-32z" fill="#E3F0F1" />
+    <path d="M500 90v252" stroke="#F0A368" stroke-width="3" stroke-dasharray="5 9" />
+    <path d="M370 354H630" stroke="#E3F0F1" stroke-width="3" />
+  </svg>
+</AnnotatedFigure>

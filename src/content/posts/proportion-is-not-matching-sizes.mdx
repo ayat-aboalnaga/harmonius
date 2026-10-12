@@ -1,0 +1,43 @@
+---
+title: "Proportion is not matching sizes"
+description: "Proportion describes relationships between parts. It is not a rule that every object should be the same size."
+publishedAt: 2026-10-12
+category: "Design principles"
+tags:
+  - "Proportion"
+  - "Composition"
+draft: true
+---
+
+import AnnotatedFigure from '../../components/post/AnnotatedFigure.astro';
+
+A common shortcut is to buy a lamp and table at matching heights and call the pairing “in proportion.”
+
+<AnnotatedFigure caption="Equal heights do not guarantee a useful relationship between lamp and table." aspectRatio="1000 / 430">
+  <svg slot="art" viewBox="0 0 1000 430" role="img" aria-label="A tiny side table and an oversized lamp share the same height, making the pairing awkward" preserveAspectRatio="xMidYMid meet">
+    <rect width="1000" height="430" fill="#17302E" />
+    <path d="M120 340H880" stroke="#326166" stroke-width="3" />
+    <path d="M265 302h130v20H265zm16 20v30m98-30v30" fill="#F0A368" />
+    <path d="M510 340V105m-110 0h220l-35-85H445z" fill="#CC6D64" stroke="#E3F0F1" stroke-width="5" />
+    <path d="M200 302H740" stroke="#64C3CC" stroke-width="2" stroke-dasharray="8 10" />
+    <path d="M840 90v250m-9-18 9 18 9-18m-18-214 9-18 9 18" fill="none" stroke="#E3F0F1" stroke-width="3" />
+  </svg>
+</AnnotatedFigure>
+
+The mistake comes from treating proportion as a formula detached from use. Equal measurements may look arbitrary if they ignore what each part needs to do and how the whole is composed.
+
+## Compare part to whole
+
+Proportion is the comparative size of parts within an object, group, or space. Judge a relationship in context: a shade should relate to its base, and furniture should relate to the room and to neighboring pieces.
+
+<AnnotatedFigure caption="A compact shade, stable base, and table work as a considered group, not identical measurements." aspectRatio="1000 / 430">
+  <svg slot="art" viewBox="0 0 1000 430" role="img" aria-label="A lamp with a balanced shade and base sits on a table with room for a book and cup" preserveAspectRatio="xMidYMid meet">
+    <rect width="1000" height="430" fill="#17302E" />
+    <path d="M120 340H880" stroke="#326166" stroke-width="3" />
+    <path d="M240 244h500v24H240zm32 24v72m436-72v72" fill="#326166" stroke="#E3F0F1" stroke-width="4" />
+    <path d="M470 244v-93m-66 0h132l-19-52h-94z" fill="#F0A368" stroke="#E3F0F1" stroke-width="5" />
+    <path d="M315 215h82m-82 12h55" stroke="#CC6D64" stroke-width="6" />
+    <path d="M640 228v-18q0-15 15-15h33q15 0 15 15v34h-63z" fill="#64C3CC" />
+    <path d="M404 151h132m-66 0v-52" stroke="#98C7CC" stroke-width="2" stroke-dasharray="5 7" />
+  </svg>
+</AnnotatedFigure>
