@@ -1,0 +1,76 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticleContent from '../../components/post/ArticleContent.astro';
+import DraftPreviewBanner from '../../components/post/DraftPreviewBanner.astro';
+import PostFooter from '../../components/post/PostFooter.astro';
+import PostHeader from '../../components/post/PostHeader.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+export async function getStaticPaths() {
+	if (!import.meta.env.DEV) return [];
+
+	const drafts = await getCollection('posts', ({ data }) => data.draft);
+	return drafts.map((post) => ({
+		params: { slug: post.id },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<SiteLayout
+	title={`${post.data.title} — Local draft preview — Fieldnotes`}
+	description={`Local-only draft preview: ${post.data.description}`}
+	footerMode="compact"
+>
+	<DraftPreviewBanner backHref="/drafts/" backLabel="All draft previews" />
+	<div class="reading-progress" aria-hidden="true"></div>
+	<main>
+		<article>
+			<PostHeader
+				title={post.data.title}
+				category={post.data.category}
+				publishedAt={post.data.publishedAt}
+			/>
+			<ArticleContent>
+				<Content />
+			</ArticleContent>
+			<PostFooter
+				tags={post.data.tags}
+				backHref="/drafts/"
+				backLabel="All draft previews"
+			/>
+		</article>
+	</main>
+</SiteLayout>
+
+<script>
+	const progress = document.querySelector<HTMLElement>('.reading-progress');
+
+	if (progress) {
+		const updateProgress = () => {
+			const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+			const ratio = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 1;
+			progress.style.transform = `scaleX(${Math.min(1, Math.max(0, ratio))})`;
+		};
+
+		window.addEventListener('scroll', updateProgress, { passive: true });
+		window.addEventListener('resize', updateProgress);
+		updateProgress();
+	}
+</script>
+
+<style>
+	.reading-progress {
+		background: var(--color-action);
+		height: 3px;
+		inset: 0 auto auto 0;
+		position: fixed;
+		transform: scaleX(0);
+		transform-origin: left center;
+		width: 100%;
+		z-index: 5;
+	}
+</style>

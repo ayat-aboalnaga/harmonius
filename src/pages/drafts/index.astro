@@ -1,0 +1,186 @@
+---
+import { getCollection } from 'astro:content';
+import DraftPreviewBanner from '../../components/post/DraftPreviewBanner.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+if (!import.meta.env.DEV) {
+	return Astro.redirect('/');
+}
+
+const drafts = (await getCollection('posts', ({ data }) => data.draft)).sort(
+	(a, b) => a.data.title.localeCompare(b.data.title),
+);
+
+const dateFormat = new Intl.DateTimeFormat('en', {
+	day: 'numeric',
+	month: 'short',
+	year: 'numeric',
+});
+---
+
+<SiteLayout
+	title="Draft previews — Fieldnotes"
+	description="Local-only previews of unpublished Fieldnotes articles."
+>
+	<DraftPreviewBanner backHref="/" backLabel="Back to journal" />
+	<main class="draft-index">
+		<header class="index-heading">
+			<p class="index-category">Editorial workspace</p>
+			<h1>Drafts in progress.</h1>
+			<p class="index-description">
+				Local previews of unpublished notes. Open a title to read it as an article.
+			</p>
+			<p class="draft-count">
+				<span>{drafts.length.toString().padStart(2, '0')}</span>
+				{drafts.length === 1 ? 'draft' : 'drafts'}
+			</p>
+		</header>
+
+		{drafts.length > 0 ? (
+			<ol class="draft-list">
+				{drafts.map((post) => (
+					<li>
+						<a href={`/drafts/${post.id}/`}>
+							<span class="draft-copy">
+								<span class="draft-meta">
+									<span>{post.data.category}</span>
+									<time datetime={post.data.publishedAt.toISOString()}>
+										{dateFormat.format(post.data.publishedAt)}
+									</time>
+								</span>
+								<strong>{post.data.title}</strong>
+								<span class="draft-description">{post.data.description}</span>
+							</span>
+							<svg aria-hidden="true" viewBox="0 0 18 18">
+								<path d="M3 9h11M9 4l5 5-5 5" />
+							</svg>
+						</a>
+					</li>
+				))}
+			</ol>
+		) : (
+			<p class="empty-state">No draft posts yet.</p>
+		)}
+	</main>
+</SiteLayout>
+
+<style>
+	.draft-index {
+		margin: 0 auto;
+		max-width: 1000px;
+		padding: 0 clamp(22px, 4vw, 48px) 100px;
+	}
+	.index-heading {
+		padding: clamp(48px, 7vw, 76px) 0 32px;
+	}
+	.index-category {
+		color: var(--color-teal);
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: .13em;
+		margin: 0 0 14px;
+		text-transform: uppercase;
+	}
+	h1 {
+		color: var(--color-teal-deep);
+		font: 500 clamp(38px, 6vw, 60px)/1.04 var(--font-display);
+		letter-spacing: -.04em;
+		margin: 0;
+		text-wrap: balance;
+	}
+	.index-description {
+		color: var(--color-teal-deep);
+		font-size: 15px;
+		line-height: 1.65;
+		margin: 18px 0 0;
+		max-width: 54ch;
+	}
+	.draft-count {
+		align-items: baseline;
+		border-bottom: 1px solid var(--color-line);
+		color: var(--color-teal);
+		display: flex;
+		font-size: 11px;
+		font-weight: 650;
+		gap: 9px;
+		letter-spacing: .08em;
+		margin: 36px 0 0;
+		padding-bottom: 12px;
+		text-transform: uppercase;
+	}
+	.draft-count span {
+		color: var(--color-coral);
+		font-size: 16px;
+		font-variant-numeric: tabular-nums;
+	}
+	.draft-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.draft-list li {
+		border-bottom: 1px solid var(--color-line);
+	}
+	.draft-list a {
+		align-items: center;
+		color: inherit;
+		display: flex;
+		gap: 24px;
+		justify-content: space-between;
+		padding: 21px 4px;
+		text-decoration: none;
+	}
+	.draft-copy {
+		display: grid;
+		gap: 5px;
+	}
+	.draft-meta {
+		color: var(--color-teal);
+		display: flex;
+		font-size: 10px;
+		gap: 14px;
+		letter-spacing: .08em;
+		text-transform: uppercase;
+	}
+	.draft-meta time { font-variant-numeric: tabular-nums; }
+	.draft-copy strong {
+		color: var(--color-teal-deep);
+		font: 500 24px/1.18 var(--font-display);
+		letter-spacing: -.02em;
+		text-wrap: balance;
+	}
+	.draft-description {
+		color: var(--color-teal);
+		font-size: 13px;
+		line-height: 1.55;
+		max-width: 64ch;
+	}
+	.draft-list a > svg {
+		fill: none;
+		flex: 0 0 18px;
+		height: 18px;
+		stroke: var(--color-teal);
+		stroke-linecap: square;
+		stroke-width: 1.5;
+		transition: transform 180ms ease-out;
+		width: 18px;
+	}
+	.draft-list a:hover > svg { transform: translateX(4px); }
+	.draft-list a:hover strong { color: var(--color-coral); }
+	.draft-list a:focus-visible {
+		outline: 2px solid var(--color-teal-deep);
+		outline-offset: 4px;
+	}
+	.empty-state {
+		color: var(--color-teal);
+		padding-block: 24px;
+	}
+	@media (max-width: 640px) {
+		.draft-index { padding-bottom: 64px; }
+		.draft-list a { gap: 12px; padding-block: 18px; }
+		.draft-copy strong { font-size: 21px; }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.draft-list a > svg { transition: none; }
+	}
+</style>
