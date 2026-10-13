@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import DraftPreviewBanner from '../../components/post/DraftPreviewBanner.astro';
 import SiteLayout from '../../layouts/SiteLayout.astro';
+import { pageTitle, site } from '../../site';
 
 if (!import.meta.env.DEV) {
 	return Astro.redirect('/');
@@ -19,8 +20,8 @@ const dateFormat = new Intl.DateTimeFormat('en', {
 ---
 
 <SiteLayout
-	title="Draft previews — Fieldnotes"
-	description="Local-only previews of unpublished Fieldnotes articles."
+	title={pageTitle(site.draftsTitle)}
+	description={`Local-only previews of unpublished ${site.name} articles.`}
 >
 	<DraftPreviewBanner backHref="/" backLabel="Back to journal" />
 	<main class="draft-index">

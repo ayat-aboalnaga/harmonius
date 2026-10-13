@@ -5,6 +5,7 @@ import PostFooter from '../../components/post/PostFooter.astro';
 import PostHeader from '../../components/post/PostHeader.astro';
 import PostHero from '../../components/post/PostHero.astro';
 import SiteLayout from '../../layouts/SiteLayout.astro';
+import { pageTitle } from '../../site';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -25,7 +26,7 @@ const heroAnnotations = [
 ---
 
 <SiteLayout
-	title={`${post.data.title} — Fieldnotes`}
+	title={pageTitle(post.data.title)}
 	description={post.data.description}
 	footerMode="compact"
 >

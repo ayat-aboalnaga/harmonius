@@ -5,6 +5,7 @@ import DraftPreviewBanner from '../../components/post/DraftPreviewBanner.astro';
 import PostFooter from '../../components/post/PostFooter.astro';
 import PostHeader from '../../components/post/PostHeader.astro';
 import SiteLayout from '../../layouts/SiteLayout.astro';
+import { pageTitle, site } from '../../site';
 
 export async function getStaticPaths() {
 	if (!import.meta.env.DEV) return [];
@@ -21,7 +22,7 @@ const { Content } = await render(post);
 ---
 
 <SiteLayout
-	title={`${post.data.title} — Local draft preview — Fieldnotes`}
+	title={pageTitle(`${post.data.title} — ${site.draftPreviewTitle}`)}
 	description={`Local-only draft preview: ${post.data.description}`}
 	footerMode="compact"
 >

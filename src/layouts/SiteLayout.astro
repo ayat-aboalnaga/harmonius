@@ -1,4 +1,6 @@
 ---
+import { site } from '../site';
+
 interface Props {
 	title: string;
 	description: string;
@@ -35,9 +37,9 @@ const { title, description, footerMode = 'full' } = Astro.props;
 	<body>
 		<header class="site-header">
 			<div class="header-inner">
-				<a class="wordmark" href="/" aria-label="Fieldnotes home">
-					<span class="mark" aria-hidden="true">F.</span>
-					<span>Fieldnotes</span>
+				<a class="wordmark" href="/" aria-label={`${site.name} home`}>
+					<span class="wordmark-initial" aria-hidden="true">{site.name[0]}</span>
+					<span class="wordmark-rest">{site.name.slice(1).toLowerCase()}</span>
 				</a>
 				<nav aria-label="Main navigation">
 					<a href="/#journal-title">Journal</a>
@@ -53,18 +55,18 @@ const { title, description, footerMode = 'full' } = Astro.props;
 			<div class="footer-inner">
 				{footerMode === 'compact' && (
 					<div class="compact-footer">
-						<span class="copyright">© {new Date().getFullYear()} Fieldnotes</span>
-						<span>Design, detail, everyday.</span>
+						<span class="copyright">© {new Date().getFullYear()} {site.name}</span>
+						<span>{site.tagline}</span>
 					</div>
 				)}
 				{footerMode === 'full' && (
 					<>
 						<div class="footer-brand">
-							<a class="wordmark" href="/" aria-label="Fieldnotes home">
-								<span class="mark" aria-hidden="true">F.</span>
-								<span>Fieldnotes</span>
+							<a class="wordmark" href="/" aria-label={`${site.name} home`}>
+								<span class="wordmark-initial" aria-hidden="true">{site.name[0]}</span>
+								<span class="wordmark-rest">{site.name.slice(1).toLowerCase()}</span>
 							</a>
-							<p>An independent journal on design and the everyday.</p>
+							<p>{site.footerDescription}</p>
 						</div>
 						<nav class="footer-links" aria-label="Footer navigation">
 							<div>
@@ -74,14 +76,14 @@ const { title, description, footerMode = 'full' } = Astro.props;
 								<a href="/#palette-guide">Palette</a>
 							</div>
 							<div>
-								<span class="footer-label">Fieldnotes</span>
+								<span class="footer-label">{site.name}</span>
 								<a href="/#studio-preview">Studio preview</a>
-								<a href="mailto:hello@fieldnotes.design">Contact</a>
+								<a href={`mailto:${site.contactEmail}`}>Contact</a>
 							</div>
 						</nav>
 						<div class="footer-bottom">
-							<span class="copyright">© {new Date().getFullYear()} Fieldnotes</span>
-							<span>Design, detail, everyday.</span>
+							<span class="copyright">© {new Date().getFullYear()} {site.name}</span>
+							<span>{site.tagline}</span>
 						</div>
 					</>
 				)}
@@ -182,19 +184,17 @@ const { title, description, footerMode = 'full' } = Astro.props;
 		color: inherit;
 		display: inline-flex;
 		font: 600 22px/1 var(--font-display);
-		gap: 11px;
+		gap: 5.5px;
 		letter-spacing: -.025em;
 		text-decoration: none;
 	}
-	.mark {
-		align-items: center;
-		background: var(--color-coral);
-		color: var(--color-ink-on-coral);
-		display: inline-flex;
-		font: 600 13px/1 var(--font-display);
-		height: 34px;
-		justify-content: center;
-		width: 34px;
+	.wordmark-initial {
+		color: var(--color-action);
+		font: 700 28.6px/1 var(--font-display);
+	}
+	.wordmark-rest {
+		color: #fff;
+		font: 400 28.6px/1 var(--font-display);
 	}
 	.site-header nav {
 		align-items: center;
@@ -235,11 +235,11 @@ const { title, description, footerMode = 'full' } = Astro.props;
 		padding-top: 40px;
 	}
 	.site-footer .wordmark { font-size: 16px; }
-	.site-footer .mark {
-		background: var(--color-coral);
-		color: var(--color-ink-on-coral);
-		height: 30px;
-		width: 30px;
+	.site-footer .wordmark-initial {
+		font-size: 20.8px;
+	}
+	.site-footer .wordmark-rest {
+		font-size: 20.8px;
 	}
 	.site-footer p {
 		color: var(--color-mist);
